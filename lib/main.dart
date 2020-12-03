@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:victorious/page/fighters/fighters_page.dart';
+import 'package:victorious/light_theme.dart';
+
+import 'page/home/home_page.dart';
 
 void main() {
   Firebase.initializeApp();
@@ -13,10 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: FightersPage(),
+      theme: lightTheme,
+      home: HomePage(),
     );
   }
 }
