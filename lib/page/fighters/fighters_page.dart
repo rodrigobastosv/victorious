@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:victorious/data/fighters.dart';
-import 'package:victorious/model/fighter_model.dart';
 
+import '../../data/fighters.dart';
+import '../../model/fighter_model.dart';
 import 'widget/fighter_card.dart';
 
 class FightersPage extends StatefulWidget {

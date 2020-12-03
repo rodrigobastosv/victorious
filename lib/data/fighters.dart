@@ -1,4 +1,4 @@
-import 'package:victorious/model/fighter_model.dart';
+import '../model/fighter_model.dart';
 
 final allFighters = [
   FighterModel(

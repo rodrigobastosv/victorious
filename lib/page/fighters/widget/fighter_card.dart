@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:victorious/model/fighter_model.dart';
+
+import '../../../model/fighter_model.dart';
 
 class FighterCard extends StatelessWidget {
   const FighterCard(this.fighter, {Key key}) : super(key: key);

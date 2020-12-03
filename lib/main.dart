@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:victorious/light_theme.dart';
 
+import 'light_theme.dart';
 import 'page/home/home_page.dart';
 
 void main() {
