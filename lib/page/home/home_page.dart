@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 
 import '../fighters/fighters_page.dart';
+import 'header_hoverable_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Victorious'),
+        title: Image.asset(
+          'web/images/logo.png',
+          height: 40,
+        ),
         actions: [
-          FlatButton(
-            child: Text('Fighters'),
-            textColor: Theme.of(context).appBarTheme.textTheme.button.color,
+          HeaderHoverableButton(
+            text: 'Lutadores',
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute<Widget>(
@@ -19,19 +23,16 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          FlatButton(
-            child: Text('Menu'),
-            textColor: Theme.of(context).appBarTheme.textTheme.button.color,
+          HeaderHoverableButton(
+            text: 'Menu',
             onPressed: () {},
           ),
-          FlatButton(
-            child: Text('Menu'),
-            textColor: Theme.of(context).appBarTheme.textTheme.button.color,
+          HeaderHoverableButton(
+            text: 'Menu',
             onPressed: () {},
           ),
-          FlatButton(
-            child: Text('Menu'),
-            textColor: Theme.of(context).appBarTheme.textTheme.button.color,
+          HeaderHoverableButton(
+            text: 'Menu',
             onPressed: () {},
           ),
         ],
