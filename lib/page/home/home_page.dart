@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hovering/hovering.dart';
+import 'package:victorious/page/home/widget/next_events.dart';
 
 import '../fighters/fighters_page.dart';
-import 'header_hoverable_button.dart';
+import 'widget/header_hoverable_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -37,8 +37,10 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text('Home here'),
+      body: Column(
+        children: [
+          NextEvents(),
+        ],
       ),
       bottomNavigationBar: BottomAppBar(
         child: Text(
