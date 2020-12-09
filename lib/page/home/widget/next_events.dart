@@ -8,19 +8,25 @@ class NextEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-        options: CarouselOptions(
-          autoPlay: true,
-          viewportFraction: 0.9
-        ),
-        items: nextEvents
-            .map(
-              (event) => Image.network(
-                event,
-                height: 300,
-                width: 500,
+      options: CarouselOptions(
+        autoPlay: true,
+        viewportFraction: 0.8,
+        enlargeCenterPage: true,
+      ),
+      items: nextEvents
+          .map(
+            (event) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width - 16,
+                child: Image.network(
+                  event,
+                  fit: BoxFit.contain,
+                ),
               ),
-            )
-            .toList(),
-      );
+            ),
+          )
+          .toList(),
+    );
   }
 }

@@ -32,7 +32,7 @@ class HeaderHoverableButton extends StatelessWidget {
                 ),
               ),
               textColor: Theme.of(context).appBarTheme.textTheme.button.color,
-              onPressed: () => onPressed,
+              onPressed: onPressed,
             ),
           ),
       ),
@@ -41,7 +41,7 @@ class HeaderHoverableButton extends StatelessWidget {
           text,
         ),
         textColor: Theme.of(context).appBarTheme.textTheme.button.color,
-        onPressed: () => onPressed,
+        onPressed: onPressed,
       ),
     );
   }

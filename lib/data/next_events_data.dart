@@ -1,5 +1,6 @@
 final nextEvents = [
+  'http://www.sapcenter.com/assets/img/Bellator-650x400_SAP_site-25th-3e6bb8e7b9.jpg',
   'https://blogs.opovo.com.br/clubedaluta/wp-content/uploads/sites/53/2018/09/evento.jpg',
-  'https://images.tapology.com/poster_images/61112/profile/victorious2.jpg?1560400691'
-  'https://4.bp.blogspot.com/-VJoF54PEZ4Q/W56GNxqVnvI/AAAAAAABI6I/m9wh6gRxuGAtq-57gZQGTxvJEmPDLfNIgCLcBGAs/s1600/Victorious%2B1.jpeg'
+  'http://www.sapcenter.com/assets/img/B165_1920x1080_announce-a35d565dd3.jpg',
+  'https://i0.wp.com/peninsulamoves.org/wp-content/uploads/2019/07/090719-BELLATOR750x462_local-29c0ac4c43.jpg?w=750&ssl=1'
 ];

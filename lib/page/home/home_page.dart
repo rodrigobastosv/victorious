@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:victorious/page/events/events_page.dart';
 import 'package:victorious/page/home/widget/next_events.dart';
 
 import '../fighters/fighters_page.dart';
@@ -24,8 +25,13 @@ class HomePage extends StatelessWidget {
             ),
           ),
           HeaderHoverableButton(
-            text: 'Menu',
-            onPressed: () {},
+            text: 'Eventos',
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute<Widget>(
+                builder: (buildContext) => EventsPage(),
+              ),
+            ),
           ),
           HeaderHoverableButton(
             text: 'Menu',
