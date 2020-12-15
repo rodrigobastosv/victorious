@@ -21,27 +21,37 @@ class HeaderHoverableButton extends StatelessWidget {
       onHover: (_) => onHover,
       hoverChild: Parallelogram(
         cutLength: 20,
-        child: Container(
-          width: 180,
-            child: FlatButton(
-              color: Colors.white,
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+        child: InkWell(
+          child: Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            alignment: Alignment.center,
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Bebas',
+                fontSize: 18,
               ),
-              textColor: Theme.of(context).appBarTheme.textTheme.button.color,
-              onPressed: onPressed,
             ),
           ),
-      ),
-      child: FlatButton(
-        child: Text(
-          text,
+          onTap: onPressed,
         ),
-        textColor: Theme.of(context).appBarTheme.textTheme.button.color,
-        onPressed: onPressed,
+      ),
+      child: InkWell(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          alignment: Alignment.center,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontFamily: 'Bebas',
+              fontSize: 18,
+              color: Theme.of(context).appBarTheme.textTheme.button.color,
+            ),
+          ),
+        ),
+        onTap: onPressed,
       ),
     );
   }

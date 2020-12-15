@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:victorious/page/events/events_page.dart';
-import 'package:victorious/page/home/widget/next_events.dart';
 
+import '../events/events_page.dart';
 import '../fighters/fighters_page.dart';
 import 'widget/header_hoverable_button.dart';
+import 'widget/next_events.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,6 +15,10 @@ class HomePage extends StatelessWidget {
           height: 40,
         ),
         actions: [
+          HeaderHoverableButton(
+            text: 'Quem somos',
+            onPressed: () {},
+          ),
           HeaderHoverableButton(
             text: 'Lutadores',
             onPressed: () => Navigator.push(
@@ -34,25 +38,35 @@ class HomePage extends StatelessWidget {
             ),
           ),
           HeaderHoverableButton(
-            text: 'Menu',
+            text: 'Calendario',
             onPressed: () {},
           ),
           HeaderHoverableButton(
-            text: 'Menu',
+            text: 'Videos',
             onPressed: () {},
           ),
+          HeaderHoverableButton(
+            text: 'Blog',
+            onPressed: () {},
+          ),
+          const SizedBox(width: 16),
         ],
       ),
-      body: Column(
-        children: [
-          NextEvents(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            NextEvents(),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Text(
-          'Footer',
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+          child: Text(
+            '© 2020 Victorious. All rights reserved.',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
         ),
       ),
