@@ -10,15 +10,16 @@ class NextEvents extends StatelessWidget {
     return CarouselSlider(
       options: CarouselOptions(
         autoPlay: true,
-        viewportFraction: 0.8,
         enlargeCenterPage: true,
+        height: 500,
       ),
       items: nextEvents
           .map(
             (event) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Container(
-                width: MediaQuery.of(context).size.width - 16,
+                width: MediaQuery.of(context).size.width - 24,
+                color: Theme.of(context).primaryColor,
                 child: Image.network(
                   event,
                   fit: BoxFit.contain,

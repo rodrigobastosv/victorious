@@ -33,4 +33,9 @@ final lightTheme = ThemeData(
     color: Colors.black,
     elevation: 0,
   ),
+  cardTheme: CardTheme(
+    elevation: 3,
+    margin: EdgeInsets.zero,
+    shape: RoundedRectangleBorder(),
+  ),
 );

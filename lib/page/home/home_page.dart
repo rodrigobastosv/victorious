@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:victorious/page/home/widget/comments.dart';
 
 import '../events/events_page.dart';
 import '../fighters/fighters_page.dart';
+import 'widget/footer.dart';
 import 'widget/header_hoverable_button.dart';
+import 'widget/news.dart';
 import 'widget/next_events.dart';
+import 'widget/sponsors.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -56,49 +59,16 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(height: 24),
             NextEvents(),
-            BottomAppBar(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 24,
-                    horizontal: 16,
-                  ),
-                  child: Column(
-                    children: [
-                      Wrap(
-                        spacing: 24,
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.instagram,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                          FaIcon(
-                            FontAwesomeIcons.twitter,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                          FaIcon(
-                            FontAwesomeIcons.facebook,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                          FaIcon(
-                            FontAwesomeIcons.youtube,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        '© 2020 Victorious. Todos os direitos reservados.',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            const SizedBox(height: 48),
+            News(),
+            const SizedBox(height: 48),
+            Comments(),
+            const SizedBox(height: 48),
+            Sponsors(),
+            const SizedBox(height: 24),
+            Footer(),
           ],
         ),
       ),
