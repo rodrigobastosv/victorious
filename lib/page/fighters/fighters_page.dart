@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../data/fighters.dart';
 import '../../model/fighter_model.dart';
+import '../shared/vs_scaffold.dart';
 import 'widget/fighter_card.dart';
 
 class FightersPage extends StatefulWidget {
@@ -37,9 +39,9 @@ class _FightersPageState extends State<FightersPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return VSScaffold(
       body: Padding(
-        padding: EdgeInsets.all(18),
+        padding: EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -47,24 +49,27 @@ class _FightersPageState extends State<FightersPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 120),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: 'Buscar Lutador',
-                  ),
+                      hintText: 'Buscar Lutador',
+                      prefixIcon: FaIcon(FontAwesomeIcons.search)),
                   onChanged: _filterFighters,
                 ),
               ),
-              fighters.isEmpty ? Center(
-                child: Text('Nenhum lutador encontrado!'),
-              ) :  GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 2,
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 4,
-                  mainAxisSpacing: 4,
-                ),
-                itemBuilder: (_, i) => FighterCard(fighters[i]),
-                itemCount: fighters.length,
-              ),
+              SizedBox(height: 24),
+              fighters.isEmpty
+                  ? Center(
+                      child: Text('Nenhum lutador encontrado!'),
+                    )
+                  : GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 2,
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 4,
+                        mainAxisSpacing: 4,
+                      ),
+                      itemBuilder: (_, i) => FighterCard(fighters[i]),
+                      itemCount: fighters.length,
+                    ),
             ],
           ),
         ),

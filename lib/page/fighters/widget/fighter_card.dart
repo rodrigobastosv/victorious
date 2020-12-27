@@ -9,13 +9,15 @@ class FighterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
+      margin: EdgeInsets.all(8),
       child: Row(
         children: [
           Image.network(
             fighter.urlImage,
             fit: BoxFit.cover,
           ),
+          SizedBox(width: 16),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +26,7 @@ class FighterCard extends StatelessWidget {
                 fighter.name,
                 style: TextStyle(
                   fontSize: 28,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Bebas',
                 ),
               ),
               SizedBox(height: 16),
