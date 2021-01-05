@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '../events/events_page.dart';
 import '../fighters/fighters_page.dart';
+import '../home/home_page.dart';
 import '../home/widget/header_hoverable_button.dart';
 
 class VSAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Image.asset(
-        'web/images/logo.png',
-        height: 40,
+      title: InkWell(
+        child: Image.asset(
+          'web/images/logo.png',
+          height: 36,
+        ),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute<Widget>(
+            builder: (buildContext) => HomePage(),
+          ),
+        ),
       ),
       leadingWidth: 0,
       automaticallyImplyLeading: false,
@@ -29,15 +37,6 @@ class VSAppBar extends StatelessWidget {
           ),
         ),
         HeaderHoverableButton(
-          text: 'Eventos',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => EventsPage(),
-            ),
-          ),
-        ),
-        HeaderHoverableButton(
           text: 'Calendario',
           onPressed: () {},
         ),
@@ -47,6 +46,10 @@ class VSAppBar extends StatelessWidget {
         ),
         HeaderHoverableButton(
           text: 'Blog',
+          onPressed: () {},
+        ),
+        HeaderHoverableButton(
+          text: 'Contato',
           onPressed: () {},
         ),
         const SizedBox(width: 16),

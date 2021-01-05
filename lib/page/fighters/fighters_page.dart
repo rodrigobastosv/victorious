@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../data/fighters.dart';
 import '../../model/fighter_model.dart';
 import '../shared/vs_scaffold.dart';
+import 'widget/category_button.dart';
 import 'widget/fighter_card.dart';
 
 class FightersPage extends StatefulWidget {
@@ -42,24 +43,36 @@ class _FightersPageState extends State<FightersPage> {
     return VSScaffold(
       body: Padding(
         padding: EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 120),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'Buscar Lutador',
-                      prefixIcon: FaIcon(FontAwesomeIcons.search)),
-                  onChanged: _filterFighters,
-                ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 120),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Buscar Lutador',
+                    prefixIcon: FaIcon(FontAwesomeIcons.search)),
+                onChanged: _filterFighters,
               ),
-              SizedBox(height: 24),
-              fighters.isEmpty
-                  ? Center(
-                      child: Text('Nenhum lutador encontrado!'),
-                    )
-                  : GridView.builder(
+            ),
+            SizedBox(height: 24),
+            Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              alignment: WrapAlignment.center,
+              children: [
+                CategoryButton(),
+                CategoryButton(),
+                CategoryButton(),
+                CategoryButton(),
+              ],
+            ),
+            SizedBox(height: 24),
+            fighters.isEmpty
+                ? Center(
+                    child: Text('Nenhum lutador encontrado!'),
+                  )
+                : Expanded(
+                    child: GridView.builder(
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio: 2,
@@ -70,8 +83,8 @@ class _FightersPageState extends State<FightersPage> {
                       itemBuilder: (_, i) => FighterCard(fighters[i]),
                       itemCount: fighters.length,
                     ),
-            ],
-          ),
+                  ),
+          ],
         ),
       ),
     );
