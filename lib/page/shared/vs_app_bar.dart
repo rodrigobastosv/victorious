@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:victorious/page/videos/videos_page.dart';
 
 import '../fighters/fighters_page.dart';
 import '../home/home_page.dart';
@@ -42,7 +43,12 @@ class VSAppBar extends StatelessWidget {
         ),
         HeaderHoverableButton(
           text: 'Videos',
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (buildContext) => VideosPage(),
+            ),
+          ),
         ),
         HeaderHoverableButton(
           text: 'Blog',
