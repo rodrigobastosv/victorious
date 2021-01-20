@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../shared/vs_scaffold.dart';
-import 'widget/comments.dart';
 import 'widget/footer.dart';
 import 'widget/news.dart';
 import 'widget/next_events.dart';
 import 'widget/sponsors.dart';
+import 'widget/tweets.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 48),
             News(),
             const SizedBox(height: 48),
-            Comments(),
+            Tweets(),
             const SizedBox(height: 48),
             Sponsors(),
             const SizedBox(height: 24),

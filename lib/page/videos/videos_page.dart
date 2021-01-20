@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:victorious/page/shared/vs_scaffold.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+
+import '../shared/vs_scaffold.dart';
 
 class VideosPage extends StatefulWidget {
   VideosPage({Key key}) : super(key: key);

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:victorious/page/videos/videos_page.dart';
 
+import '../calendar/calendar_page.dart';
 import '../fighters/fighters_page.dart';
 import '../home/home_page.dart';
 import '../home/widget/header_hoverable_button.dart';
+import '../videos/videos_page.dart';
 
 class VSAppBar extends StatelessWidget {
   @override
@@ -39,7 +40,12 @@ class VSAppBar extends StatelessWidget {
         ),
         HeaderHoverableButton(
           text: 'Calendario',
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (buildContext) => CalendarPage(),
+            ),
+          ),
         ),
         HeaderHoverableButton(
           text: 'Videos',

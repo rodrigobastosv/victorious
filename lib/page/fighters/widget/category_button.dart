@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CategoryButton extends StatelessWidget {
+  CategoryButton(this.nome);
+
+  final String nome;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -12,7 +16,7 @@ class CategoryButton extends StatelessWidget {
           width: 200,
           child: Center(
             child: Text(
-              'CATEGORIA',
+              nome,
               style: TextStyle(
                 fontFamily: 'Bebas',
                 fontSize: 22,
