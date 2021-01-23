@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:victorious/page/quem_somos/quem_somos_page.dart';
 
 import '../calendar/calendar_page.dart';
 import '../fighters/fighters_page.dart';
@@ -27,7 +28,12 @@ class VSAppBar extends StatelessWidget {
       actions: [
         HeaderHoverableButton(
           text: 'Quem somos',
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (buildContext) => QuemSomosPage(),
+            ),
+          ),
         ),
         HeaderHoverableButton(
           text: 'Lutadores',

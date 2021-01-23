@@ -6,55 +6,66 @@ class Tweets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream:
-            FirebaseFirestore.instance.collection('twitter_post').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('twitter_post')
+            .orderBy('data', descending: true)
+            .limit(3)
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final data = snapshot.data;
-            final doc = data.docs.first;
-            return Container(
-              width: 800,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.quoteLeft,
-                    size: 30,
-                    color: Theme.of(context).colorScheme.primaryVariant,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Text(
-                      doc.data()['texto'],
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+            final docs = data.docs;
+            return SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (_, i) => Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  width: 600,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FaIcon(
-                        FontAwesomeIcons.quoteRight,
+                        FontAwesomeIcons.quoteLeft,
                         size: 30,
                         color: Theme.of(context).colorScheme.primaryVariant,
                       ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Text(
+                          docs[i].data()['texto'],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.quoteRight,
+                            size: 30,
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          ),
+                        ],
+                      ),
+                      Center(
+                        child: Text(
+                          docs[i].data()['nome_pessoa'],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Bebas',
+                            fontSize: 30,
+                            color: Theme.of(context).colorScheme.primaryVariant,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                  Center(
-                    child: Text(
-                      doc.data()['nome_pessoa'],
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Bebas',
-                        fontSize: 30,
-                        color: Theme.of(context).colorScheme.primaryVariant,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
+                itemCount: docs.length,
               ),
             );
           } else {

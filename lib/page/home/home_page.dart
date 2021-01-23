@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../shared/vs_scaffold.dart';
 import 'widget/footer.dart';
+import 'widget/latest_youtube_videos.dart';
 import 'widget/news.dart';
 import 'widget/next_events.dart';
 import 'widget/sponsors.dart';
@@ -18,6 +19,11 @@ class HomePage extends StatelessWidget {
             NextEvents(),
             const SizedBox(height: 48),
             News(),
+            const SizedBox(height: 48),
+            SizedBox(
+              height: 300,
+              child: LatestYoutubeVideos(),
+            ),
             const SizedBox(height: 48),
             Tweets(),
             const SizedBox(height: 48),

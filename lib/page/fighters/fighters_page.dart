@@ -81,15 +81,13 @@ class _FightersPageState extends State<FightersPage> {
               ),
             ),
             SizedBox(height: 24),
-            Wrap(
-              spacing: 16,
-              runSpacing: 16,
-              alignment: WrapAlignment.center,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CategoryButton('Peso Palha'),
-                CategoryButton('Peso Galo'),
-                CategoryButton('Peso Leve'),
                 CategoryButton('Feminino'),
+                CategoryButton('Peso Galo'),
+                CategoryButton('Peso Pena'),
+                CategoryButton('Peso Leve'),
               ],
             ),
             SizedBox(height: 24),
