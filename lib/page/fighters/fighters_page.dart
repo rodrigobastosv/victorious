@@ -43,9 +43,7 @@ class _FightersPageState extends State<FightersPage> {
   @override
   Widget build(BuildContext context) {
     return VSScaffold(
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
+      body: Column(
           children: [
             StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
@@ -109,7 +107,7 @@ class _FightersPageState extends State<FightersPage> {
                     ),
                   ),
           ],
-        ),
+        
       ),
     );
   }

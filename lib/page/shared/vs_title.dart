@@ -7,11 +7,14 @@ class VSTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontFamily: 'Bebas',
-        fontSize: 32,
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontFamily: 'Bebas',
+          fontSize: 32,
+        ),
       ),
     );
   }

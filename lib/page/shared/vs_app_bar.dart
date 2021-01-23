@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:victorious/page/quem_somos/quem_somos_page.dart';
 
 import '../calendar/calendar_page.dart';
 import '../fighters/fighters_page.dart';
 import '../home/home_page.dart';
 import '../home/widget/header_hoverable_button.dart';
+import '../quem_somos/quem_somos_page.dart';
 import '../videos/videos_page.dart';
 
 class VSAppBar extends StatelessWidget {
@@ -45,7 +45,7 @@ class VSAppBar extends StatelessWidget {
           ),
         ),
         HeaderHoverableButton(
-          text: 'Calendario',
+          text: 'Calendário',
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute<Widget>(
@@ -54,7 +54,7 @@ class VSAppBar extends StatelessWidget {
           ),
         ),
         HeaderHoverableButton(
-          text: 'Videos',
+          text: 'Vídeos',
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute<Widget>(

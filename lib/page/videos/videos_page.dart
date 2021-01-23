@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
+import '../home/widget/footer.dart';
 import '../shared/vs_scaffold.dart';
+import '../shared/vs_title.dart';
 
 class VideosPage extends StatefulWidget {
   VideosPage({Key key}) : super(key: key);
@@ -22,26 +24,37 @@ class _VideosPageState extends State<VideosPage> {
           if (snapshot.hasData) {
             final data = snapshot.data;
             final docs = data.docs;
-            return GridView.builder(
-              itemBuilder: (_, i) {
-                final idVideo = YoutubePlayerController.convertUrlToId(
-                    docs[i].data()['video_url']);
-                return YoutubePlayerIFrame(
-                  controller: YoutubePlayerController(
-                    initialVideoId: idVideo,
-                    params: YoutubePlayerParams(
-                      showFullscreenButton: true,
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                VSTitle('Vídeos'),
+                Expanded(
+                  child: GridView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    itemBuilder: (_, i) {
+                      final idVideo = YoutubePlayerController.convertUrlToId(
+                          docs[i].data()['video_url']);
+                      return YoutubePlayerIFrame(
+                        controller: YoutubePlayerController(
+                          initialVideoId: idVideo,
+                          params: YoutubePlayerParams(
+                            showFullscreenButton: true,
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: docs.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 1,
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
                     ),
                   ),
-                );
-              },
-              itemCount: docs.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1,
-                crossAxisCount: 4,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
+                ),
+                SizedBox(height: 24),
+                Footer(),
+              ],
             );
           } else {
             return Center(
