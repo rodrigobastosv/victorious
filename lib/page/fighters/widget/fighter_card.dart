@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../../model/fighter_model.dart';
-
 class FighterCard extends StatelessWidget {
   const FighterCard(this.fighterDoc, {Key key}) : super(key: key);
 

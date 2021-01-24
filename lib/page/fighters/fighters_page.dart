@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../data/fighters.dart';
-import '../../model/fighter_model.dart';
 import '../shared/vs_scaffold.dart';
-import 'widget/category_button.dart';
 import 'widget/fighter_card.dart';
 import 'widget/highlight_fighter_card.dart';
 
