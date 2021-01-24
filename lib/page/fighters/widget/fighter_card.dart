@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../../model/fighter_model.dart';
 
 class FighterCard extends StatelessWidget {
-  const FighterCard(this.fighter, {Key key}) : super(key: key);
+  const FighterCard(this.fighterDoc, {Key key}) : super(key: key);
 
-  final FighterModel fighter;
+  final QueryDocumentSnapshot fighterDoc;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class FighterCard extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            fighter.urlImage,
+            fighterDoc.data()['foto'],
             fit: BoxFit.cover,
           ),
           SizedBox(width: 16),
@@ -23,16 +24,16 @@ class FighterCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                fighter.name,
+                fighterDoc.data()['nome'],
                 style: TextStyle(
                   fontSize: 28,
                   fontFamily: 'Bebas',
                 ),
               ),
               SizedBox(height: 16),
-              Text(fighter.category),
+              Text(fighterDoc.data()['categoria']),
               SizedBox(height: 2),
-              Text('${fighter.wins}-${fighter.losses}-${fighter.draws}'),
+              Text(fighterDoc.data()['cartel']),
             ],
           ),
         ],
