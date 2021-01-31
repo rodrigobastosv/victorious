@@ -12,7 +12,7 @@ class VSTitle extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontFamily: 'Bebas',
+          fontFamily: 'Heading Pro',
           fontSize: 32,
         ),
       ),

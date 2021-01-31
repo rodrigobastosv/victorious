@@ -25,7 +25,7 @@ class FighterCard extends StatelessWidget {
                 fighterDoc.data()['nome'],
                 style: TextStyle(
                   fontSize: 28,
-                  fontFamily: 'Bebas',
+                  fontFamily: 'Heading Pro',
                 ),
               ),
               SizedBox(height: 16),

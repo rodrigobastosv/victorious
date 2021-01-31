@@ -30,8 +30,8 @@ class HeaderHoverableButton extends StatelessWidget {
               text,
               style: TextStyle(
                 color: Colors.black,
-                fontFamily: 'Bebas',
-                fontSize: 18,
+                fontFamily: 'Heading Pro',
+                fontSize: 20,
               ),
             ),
           ),
@@ -45,8 +45,8 @@ class HeaderHoverableButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontFamily: 'Bebas',
-              fontSize: 18,
+              fontFamily: 'Heading Pro',
+              fontSize: 20,
               color: Theme.of(context).appBarTheme.textTheme.button.color,
             ),
           ),

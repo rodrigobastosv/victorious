@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
-import '../home/widget/footer.dart';
 import '../shared/vs_scaffold.dart';
 import '../shared/vs_title.dart';
 
@@ -26,6 +25,7 @@ class _VideosPageState extends State<VideosPage> {
             final docs = data.docs;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 VSTitle('Vídeos'),
                 Expanded(
@@ -52,8 +52,7 @@ class _VideosPageState extends State<VideosPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 24),
-                Footer(),
+                SizedBox(height: 8),
               ],
             );
           } else {

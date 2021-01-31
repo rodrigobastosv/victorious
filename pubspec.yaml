@@ -88,8 +88,8 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   fonts:
-    - family: Bebas
+    - family: Heading Pro
       fonts:
-        - asset: assets/fonts/Bebas_Regular.otf
-        - asset: assets/fonts/BebasNeue_Book.otf
+        - asset: assets/fonts/Heading_Pro/HeadingCompressedPro-Regular.otf
+        - asset: assets/fonts/Heading_Pro/HeadingCompressedPro-Light.otf
           weight: 300

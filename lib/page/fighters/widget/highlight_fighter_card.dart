@@ -26,7 +26,7 @@ class HighlightFighterCard extends StatelessWidget {
                   json['nome'],
                   style: TextStyle(
                     fontSize: 28,
-                    fontFamily: 'Bebas',
+                    fontFamily: 'Heading Pro',
                   ),
                 ),
                 SizedBox(height: 16),

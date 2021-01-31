@@ -35,8 +35,6 @@ class _QuemSomosPageState extends State<QuemSomosPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 24),
-                Footer(),
               ],
             );
           } else {

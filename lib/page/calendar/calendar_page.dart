@@ -33,24 +33,22 @@ class _CalendarPageState extends State<CalendarPage> {
                     calendarController: CalendarController(),
                     rowHeight: 60,
                   ),
-                  SizedBox(
-                    height: 500,
-                    child: ListView.builder(
-                      itemBuilder: (_, i) {
-                        final timestamp = docs[i].data()['data'] as Timestamp;
-                        final data =
-                            DateTime.parse(timestamp.toDate().toString());
-                        final dataFormatada =
-                            formatDate(data, [dd, '/', mm, '/', yyyy]);
-                        return ListTile(
-                          leading: Text(dataFormatada.toString()),
-                          title: Text(docs[i].data()['nome']),
-                          subtitle: Text(docs[i].data()['descricao']),
-                        );
-                      },
-                      itemCount: docs.length,
-                    ),
-                  )
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemBuilder: (_, i) {
+                      final timestamp = docs[i].data()['data'] as Timestamp;
+                      final data =
+                          DateTime.parse(timestamp.toDate().toString());
+                      final dataFormatada =
+                          formatDate(data, [dd, '/', mm, '/', yyyy]);
+                      return ListTile(
+                        leading: Text(dataFormatada.toString()),
+                        title: Text(docs[i].data()['nome']),
+                        subtitle: Text(docs[i].data()['descricao']),
+                      );
+                    },
+                    itemCount: docs.length,
+                  ),
                 ],
               );
             } else {

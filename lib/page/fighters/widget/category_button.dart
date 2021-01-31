@@ -18,7 +18,7 @@ class CategoryButton extends StatelessWidget {
             child: Text(
               nome,
               style: TextStyle(
-                fontFamily: 'Bebas',
+                fontFamily: 'Heading Pro',
                 fontSize: 22,
                 color: Theme.of(context).colorScheme.onSecondary,
               ),

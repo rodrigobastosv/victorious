@@ -56,7 +56,7 @@ class Tweets extends StatelessWidget {
                           docs[i].data()['nome_pessoa'],
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontFamily: 'Bebas',
+                            fontFamily: 'Heading Pro',
                             fontSize: 30,
                             color: Theme.of(context).colorScheme.primaryVariant,
                           ),

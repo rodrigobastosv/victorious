@@ -17,7 +17,7 @@ class NewsItem extends StatelessWidget {
               child: Text(
                 'Imagem',
                 style: TextStyle(
-                  fontFamily: 'Bebas',
+                  fontFamily: 'Heading Pro',
                   fontSize: 18,
                 ),
               ),
@@ -28,7 +28,7 @@ class NewsItem extends StatelessWidget {
               child: Text(
                 'Lorem ipsum',
                 style: TextStyle(
-                  fontFamily: 'Bebas',
+                  fontFamily: 'Heading Pro',
                   fontSize: 18,
                 ),
               ),
