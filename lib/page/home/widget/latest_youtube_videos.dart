@@ -22,24 +22,28 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
         if (snapshot.hasData) {
           final data = snapshot.data;
           final docs = data.docs;
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, i) {
-              final idVideo = YoutubePlayerController.convertUrlToId(
-                  docs[i].data()['video_url']);
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: YoutubePlayerIFrame(
-                  controller: YoutubePlayerController(
-                    initialVideoId: idVideo,
-                    params: YoutubePlayerParams(
-                      showFullscreenButton: true,
+          return SizedBox(
+            height: 300,
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, i) {
+                final idVideo = YoutubePlayerController.convertUrlToId(
+                    docs[i].data()['video_url']);
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: YoutubePlayerIFrame(
+                    controller: YoutubePlayerController(
+                      initialVideoId: idVideo,
+                      params: YoutubePlayerParams(
+                        showFullscreenButton: true,
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-            itemCount: docs.length,
+                );
+              },
+              itemCount: docs.length,
+            ),
           );
         } else {
           return Center(

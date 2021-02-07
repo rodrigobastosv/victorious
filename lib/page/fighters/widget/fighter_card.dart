@@ -10,6 +10,9 @@ class FighterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(8),
+      color: fighterDoc.data()['destaque']
+          ? Theme.of(context).colorScheme.primary.withOpacity(.2)
+          : null,
       child: Row(
         children: [
           Image.network(

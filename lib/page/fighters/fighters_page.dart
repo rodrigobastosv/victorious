@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:victorious/page/shared/vs_title.dart';
 
 import '../shared/vs_scaffold.dart';
 import 'widget/fighter_card.dart';
-import 'widget/highlight_fighter_card.dart';
 
 class FightersPage extends StatefulWidget {
   FightersPage({Key key}) : super(key: key);
@@ -16,11 +16,12 @@ class FightersPage extends StatefulWidget {
 
 class _FightersPageState extends State<FightersPage> {
   List<String> labels = [
-    'Todos',
+    'Destaques',
     'Feminino',
     'Peso Galo',
     'Peso Pena',
     'Peso Leve',
+    'Todos',
   ];
   int selectedLabelIndex = 0;
   List<QueryDocumentSnapshot> docs;
@@ -46,61 +47,17 @@ class _FightersPageState extends State<FightersPage> {
           if (snapshot.hasData) {
             final docs = snapshot.data.docs;
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    height: 140,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, i) =>
-                          HighlightFighterCard(docs[i].data()),
-                      itemCount: docs.length,
-                    ),
-                  ),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 120),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Buscar Lutador',
-                      prefixIcon: FaIcon(
-                        FontAwesomeIcons.search,
-                      ),
-                    ),
-                    onChanged: _filterFighters,
-                  ),
-                ),
+                VSTitle('Lutadores'),
+                _buildSearch(),
                 SizedBox(height: 24),
                 Expanded(
-                  child: Column(
-                    children: [
-                      FlutterToggleTab(
-                        width: 90,
-                        borderRadius: 30,
-                        height: 50,
-                        initialIndex: selectedLabelIndex,
-                        selectedBackgroundColors: [Colors.blue],
-                        selectedTextStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        unSelectedTextStyle: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        labels: labels,
-                        selectedLabelIndex: (index) {
-                          setState(() {
-                            selectedLabelIndex = index;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 24),
-                      _getFighters(docs),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: _buildFighters(docs),
                   ),
-                )
+                ),
               ],
             );
           } else {
@@ -113,13 +70,58 @@ class _FightersPageState extends State<FightersPage> {
     );
   }
 
+  Widget _buildSearch() {
+    return Center(
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 1000),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: TextFormField(
+          decoration: InputDecoration(
+            hintText: 'Buscar Lutador',
+            prefixIcon: FaIcon(
+              FontAwesomeIcons.search,
+            ),
+          ),
+          onChanged: _filterFighters,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFighters(List<QueryDocumentSnapshot> docs) {
+    return Column(
+      children: [
+        FlutterToggleTab(
+          borderRadius: 0,
+          width: 50,
+          height: 40,
+          initialIndex: selectedLabelIndex,
+          selectedTextStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+          unSelectedTextStyle: TextStyle(),
+          labels: labels,
+          selectedLabelIndex: (index) {
+            setState(() {
+              selectedLabelIndex = index;
+            });
+          },
+        ),
+        SizedBox(height: 24),
+        _getFighters(docs),
+      ],
+    );
+  }
+
   Widget _getFighters(List<QueryDocumentSnapshot> docs) {
-    var lutadores = selectedLabelIndex != 0
-        ? docs
-            .where(
-                (doc) => doc.data()['categoria'] == labels[selectedLabelIndex])
-            .toList()
-        : docs;
+    var lutadores = selectedLabelIndex == 0
+        ? docs.where((doc) => doc.data()['destaque'] == true).toList()
+        : selectedLabelIndex == labels.length - 1
+            ? docs
+            : docs
+                .where((doc) =>
+                    doc.data()['categoria'] == labels[selectedLabelIndex])
+                .toList();
     if (query != null && query.isNotEmpty) {
       lutadores = lutadores.where((lutador) {
         final nome = lutador.data()['nome'] as String;

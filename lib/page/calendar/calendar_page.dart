@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:victorious/page/calendar/widget/calendar.dart';
+import 'package:victorious/page/calendar/widget/events_list.dart';
+import 'package:victorious/page/shared/vs_title.dart';
 import '../shared/vs_scaffold.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -26,28 +29,19 @@ class _CalendarPageState extends State<CalendarPage> {
             if (snapshot.hasData) {
               final docs = snapshot.data.docs;
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TableCalendar(
-                    locale: 'pt_BR',
-                    events: _buildEvents(docs),
-                    calendarController: CalendarController(),
-                    rowHeight: 60,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (_, i) {
-                      final timestamp = docs[i].data()['data'] as Timestamp;
-                      final data =
-                          DateTime.parse(timestamp.toDate().toString());
-                      final dataFormatada =
-                          formatDate(data, [dd, '/', mm, '/', yyyy]);
-                      return ListTile(
-                        leading: Text(dataFormatada.toString()),
-                        title: Text(docs[i].data()['nome']),
-                        subtitle: Text(docs[i].data()['descricao']),
-                      );
-                    },
-                    itemCount: docs.length,
+                  VSTitle('Calendário'),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Wrap(
+                      spacing: 24,
+                      runSpacing: 24,
+                      children: [
+                        Calendar(docs),
+                        EventsList(docs),
+                      ],
+                    ),
                   ),
                 ],
               );
@@ -60,16 +54,5 @@ class _CalendarPageState extends State<CalendarPage> {
         ),
       ),
     );
-  }
-
-  Map<DateTime, List> _buildEvents(List<QueryDocumentSnapshot> docs) {
-    final events = <DateTime, List>{};
-    for (var doc in docs) {
-      final nome = doc.data()['nome'];
-      final timestamp = doc.data()['data'] as Timestamp;
-      final data = DateTime.parse(timestamp.toDate().toString());
-      events.putIfAbsent(data, () => [nome]);
-    }
-    return events;
   }
 }

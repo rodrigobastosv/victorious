@@ -27,7 +27,7 @@ class Banners extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Container(
                       width: MediaQuery.of(context).size.width - 24,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.onBackground,
                       child: Image.network(
                         url,
                         fit: BoxFit.contain,

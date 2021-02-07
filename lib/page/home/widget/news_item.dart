@@ -12,7 +12,7 @@ class NewsItem extends StatelessWidget {
             Container(
               width: 300,
               height: 200,
-              color: Theme.of(context).accentColor.withAlpha(100),
+              color: Theme.of(context).primaryColor.withAlpha(100),
               alignment: Alignment.center,
               child: Text(
                 'Imagem',

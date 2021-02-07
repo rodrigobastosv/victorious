@@ -18,19 +18,19 @@ class Footer extends StatelessWidget {
                 children: [
                   FaIcon(
                     FontAwesomeIcons.instagram,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Colors.white,
                   ),
                   FaIcon(
                     FontAwesomeIcons.twitter,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Colors.white,
                   ),
                   FaIcon(
                     FontAwesomeIcons.facebook,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Colors.white,
                   ),
                   FaIcon(
                     FontAwesomeIcons.youtube,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Colors.white,
                   ),
                 ],
               ),
@@ -38,7 +38,7 @@ class Footer extends StatelessWidget {
               Text(
                 '© 2020 Victorious. Todos os direitos reservados.',
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Colors.white,
                 ),
               ),
             ],
