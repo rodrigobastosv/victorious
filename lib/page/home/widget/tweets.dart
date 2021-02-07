@@ -7,7 +7,7 @@ class Tweets extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection('twitter_post')
+            .collection('depoimentos')
             .orderBy('data', descending: true)
             .limit(3)
             .snapshots(),

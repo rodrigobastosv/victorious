@@ -2,15 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class NextEvents extends StatelessWidget {
-  const NextEvents({Key key}) : super(key: key);
+class Banners extends StatelessWidget {
+  const Banners({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
-          .collection('banner_proximos_eventos')
-          .orderBy('data', descending: true)
+          .collection('banners')
           .snapshots(),
       builder: (_, snapshot) {
         if (snapshot.hasData) {

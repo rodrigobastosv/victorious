@@ -4,7 +4,7 @@ import '../shared/vs_scaffold.dart';
 import 'widget/footer.dart';
 import 'widget/latest_youtube_videos.dart';
 import 'widget/news.dart';
-import 'widget/next_events.dart';
+import 'widget/banners.dart';
 import 'widget/sponsors.dart';
 import 'widget/tweets.dart';
 
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 24),
-            NextEvents(),
+            Banners(),
             const SizedBox(height: 48),
             News(),
             const SizedBox(height: 48),
