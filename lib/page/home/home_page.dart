@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../shared/vs_scaffold.dart';
-import 'widget/footer.dart';
-import 'widget/latest_youtube_videos.dart';
-import 'widget/news.dart';
 import 'widget/banners.dart';
-import 'widget/sponsors.dart';
 import 'widget/compliments.dart';
+import 'widget/footer.dart';
+import 'widget/latest_blog_posts.dart';
+import 'widget/latest_youtube_videos.dart';
+import 'widget/sponsors.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 24),
             Banners(),
             const SizedBox(height: 56),
-            News(),
+            LatestBlogPosts(),
             const SizedBox(height: 80),
             LatestYoutubeVideos(),
             const SizedBox(height: 80),

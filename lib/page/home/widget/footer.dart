@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
   @override
@@ -16,21 +17,43 @@ class Footer extends StatelessWidget {
               Wrap(
                 spacing: 24,
                 children: [
-                  FaIcon(
-                    FontAwesomeIcons.instagram,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () async {
+                      await launch(
+                          'https://www.instagram.com/victoriousmmabr/');
+                    },
+                    child: FaIcon(
+                      FontAwesomeIcons.instagram,
+                      color: Colors.white,
+                    ),
                   ),
-                  FaIcon(
-                    FontAwesomeIcons.twitter,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () async {
+                      await launch('https://twitter.com/victoriousmmabr');
+                    },
+                    child: FaIcon(
+                      FontAwesomeIcons.twitter,
+                      color: Colors.white,
+                    ),
                   ),
-                  FaIcon(
-                    FontAwesomeIcons.facebook,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () async {
+                      await launch('https://www.facebook.com/victoriousmmabr');
+                    },
+                    child: FaIcon(
+                      FontAwesomeIcons.facebook,
+                      color: Colors.white,
+                    ),
                   ),
-                  FaIcon(
-                    FontAwesomeIcons.youtube,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () async {
+                      await launch(
+                          'https://www.youtube.com/channel/UCS2agJjBKC2JuPbTh-7NDoQ');
+                    },
+                    child: FaIcon(
+                      FontAwesomeIcons.youtube,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
