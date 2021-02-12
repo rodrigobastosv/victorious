@@ -5,6 +5,7 @@ import 'widget/banners.dart';
 import 'widget/compliments.dart';
 import 'widget/footer.dart';
 import 'widget/latest_blog_posts.dart';
+import 'widget/latest_instagram_posts.dart';
 import 'widget/latest_youtube_videos.dart';
 import 'widget/sponsors.dart';
 
@@ -19,6 +20,8 @@ class HomePage extends StatelessWidget {
             Banners(),
             const SizedBox(height: 56),
             LatestBlogPosts(),
+            const SizedBox(height: 80),
+            LatestInstagramPosts(),
             const SizedBox(height: 80),
             LatestYoutubeVideos(),
             const SizedBox(height: 80),

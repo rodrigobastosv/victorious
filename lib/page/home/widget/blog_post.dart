@@ -1,46 +1,70 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 
 class BlogPost extends StatelessWidget {
+  BlogPost({
+    this.data,
+    this.imagem,
+    this.texto,
+    this.titulo,
+  });
+
+  final Timestamp data;
+  final String imagem;
+  final String texto;
+  final String titulo;
+
   @override
   Widget build(BuildContext context) {
+    final date = DateTime.parse(data.toDate().toString());
+    final dia = formatDate(date, [dd]);
+    final mes = formatDate(date, [M]);
+    final ano = formatDate(date, [yyyy]);
     return Container(
-      width: 300,
+      height: 200,
+      width: 500,
       child: Card(
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: 300,
               height: 200,
-              color: Theme.of(context).primaryColor.withAlpha(100),
               alignment: Alignment.center,
-              child: Text(
-                'Imagem',
-                style: TextStyle(
-                  fontFamily: 'Heading Pro',
-                  fontSize: 18,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(imagem),
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                'Lorem ipsum',
-                style: TextStyle(
-                  fontFamily: 'Heading Pro',
-                  fontSize: 18,
+            Container(
+              width: 200,
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    Text(
+                      '$dia de $mes de $ano',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFFe2231a),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      titulo,
+                      style: TextStyle(
+                        fontFamily: 'Heading Pro',
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dui nulla, convallis sit amet velit vitae, lobortis blandit lacus. Sed molestie consequat orci, at mattis nisi volutpat ut. Aliquam eget ante et neque scelerisque varius nec ut ex. Nulla leo magna, egestas vitae mauris eu, scelerisque porta arcu. Phasellus volutpat diam at tellus cursus, at maximus odio blandit. Sed sed tempor nisi. Aliquam imperdiet gravida mi, at tincidunt urna pellentesque sollicitudin.''',
-              ),
-            ),
-            const SizedBox(height: 16),
           ],
         ),
       ),
