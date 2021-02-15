@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InstagramPost extends StatelessWidget {
   InstagramPost({
@@ -15,43 +18,37 @@ class InstagramPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      child: Card(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 300,
-              height: 200,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(urlFoto),
-                  fit: BoxFit.fill,
+    return InkWell(
+      onTap: () => launch(link),
+      child: Container(
+        width: 300,
+        child: Card(
+          child: Column(
+            children: [
+              Container(
+                width: 300,
+                height: 200,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(urlFoto),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                descricao,
-                style: TextStyle(
-                  fontFamily: 'Heading Pro',
-                  fontSize: 18,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 16,
+                ),
+                child: Text(
+                  descricao,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                comentario,
-              ),
-            ),
-            const SizedBox(height: 16),
-          ],
+            ],
+          ),
         ),
       ),
     );

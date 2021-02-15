@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../blog/blog_page.dart';
 import '../calendar/calendar_page.dart';
+import '../contact/contact_page.dart';
 import '../fighters/fighters_page.dart';
 import '../home/home_page.dart';
 import '../home/widget/header_hoverable_button.dart';
@@ -64,11 +66,21 @@ class VSAppBar extends StatelessWidget {
         ),
         HeaderHoverableButton(
           text: 'Blog',
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (buildContext) => BlogPage(),
+            ),
+          ),
         ),
         HeaderHoverableButton(
           text: 'Contato',
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (buildContext) => ContactPage(),
+            ),
+          ),
         ),
         const SizedBox(width: 16),
       ],

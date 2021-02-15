@@ -38,4 +38,14 @@ final lightTheme = ThemeData(
     margin: EdgeInsets.zero,
     shape: RoundedRectangleBorder(),
   ),
+  dividerTheme: DividerThemeData(
+    color: Colors.yellow[800],
+    thickness: 0.3,
+    space: 64,
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(0),
+    ),
+  ),
 );

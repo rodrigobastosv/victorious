@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
     return VSScaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 24),
             Banners(),
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
             LatestYoutubeVideos(),
             const SizedBox(height: 80),
             Compliments(),
-            const SizedBox(height: 48),
+            const SizedBox(height: 56),
             Sponsors(),
             const SizedBox(height: 24),
             Footer(),

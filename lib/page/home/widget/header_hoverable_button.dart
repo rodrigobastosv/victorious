@@ -20,11 +20,11 @@ class HeaderHoverableButton extends StatelessWidget {
     return HoverWidget(
       onHover: (_) => onHover,
       hoverChild: Parallelogram(
-        cutLength: 20,
+        cutLength: 15,
         child: InkWell(
           child: Container(
             color: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             alignment: Alignment.center,
             child: Text(
               text,
@@ -38,20 +38,23 @@ class HeaderHoverableButton extends StatelessWidget {
           onTap: onPressed,
         ),
       ),
-      child: InkWell(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          alignment: Alignment.center,
-          child: Text(
-            text,
-            style: TextStyle(
-              fontFamily: 'Heading Pro',
-              fontSize: 20,
-              color: Theme.of(context).appBarTheme.textTheme.button.color,
+      child: Parallelogram(
+        cutLength: 15,
+        child: InkWell(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            alignment: Alignment.center,
+            child: Text(
+              text,
+              style: TextStyle(
+                fontFamily: 'Heading Pro',
+                fontSize: 20,
+                color: Theme.of(context).appBarTheme.textTheme.button.color,
+              ),
             ),
           ),
+          onTap: onPressed,
         ),
-        onTap: onPressed,
       ),
     );
   }

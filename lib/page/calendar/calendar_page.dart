@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:victorious/page/calendar/widget/calendar.dart';
-import 'package:victorious/page/calendar/widget/events_list.dart';
-import 'package:victorious/page/shared/vs_title.dart';
+
+import '../shared/vs_loading.dart';
 import '../shared/vs_scaffold.dart';
+import '../shared/vs_title.dart';
+import 'widget/calendar.dart';
+import 'widget/events_list.dart';
 
 class CalendarPage extends StatefulWidget {
   CalendarPage({Key key}) : super(key: key);
@@ -46,9 +46,7 @@ class _CalendarPageState extends State<CalendarPage> {
                 ],
               );
             } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
+              return VSLoading();
             }
           },
         ),

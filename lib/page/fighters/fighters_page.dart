@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:victorious/page/shared/vs_title.dart';
 
+import '../shared/vs_loading.dart';
 import '../shared/vs_scaffold.dart';
+import '../shared/vs_title.dart';
 import 'widget/fighter_card.dart';
 
 class FightersPage extends StatefulWidget {
@@ -61,9 +62,7 @@ class _FightersPageState extends State<FightersPage> {
               ],
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return VSLoading();
           }
         },
       ),
@@ -78,8 +77,11 @@ class _FightersPageState extends State<FightersPage> {
         child: TextFormField(
           decoration: InputDecoration(
             hintText: 'Buscar Lutador',
-            prefixIcon: FaIcon(
-              FontAwesomeIcons.search,
+            prefixIcon: Center(
+              widthFactor: 2,
+              child: FaIcon(
+                FontAwesomeIcons.search,
+              ),
             ),
           ),
           onChanged: _filterFighters,

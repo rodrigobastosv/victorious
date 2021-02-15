@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../../extension/extensions.dart';
-import '../../blog/widget/post_detail.dart';
+import 'post_detail.dart';
 
-class BlogPost extends StatelessWidget {
-  BlogPost({
+class Post extends StatelessWidget {
+  Post({
     this.data,
     this.imagem,
     this.texto,
@@ -33,32 +33,31 @@ class BlogPost extends StatelessWidget {
           ),
         ),
       ),
-      child: Container(
-        height: 200,
-        width: 550,
-        child: Card(
-          child: Row(
-            children: [
-              Container(
-                width: 300,
-                height: 200,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(imagem),
-                    fit: BoxFit.fill,
-                  ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 32),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 300,
+              height: 200,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(imagem),
+                  fit: BoxFit.fill,
                 ),
               ),
-              Container(
-                width: 250,
-                padding: EdgeInsets.all(8),
+            ),
+            Flexible(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       dateFormatted,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 36,
                         fontFamily: 'Heading Pro',
                         color: Theme.of(context).colorScheme.primaryVariant,
                       ),
@@ -66,20 +65,16 @@ class BlogPost extends StatelessWidget {
                     SizedBox(height: 8),
                     Text(
                       titulo,
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        height: 1.1,
+                        fontSize: 30,
+                        fontFamily: 'Heading Pro',
                       ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

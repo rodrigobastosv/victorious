@@ -19,7 +19,7 @@ class Compliments extends StatelessWidget {
           return CarouselSlider(
             options: CarouselOptions(
               autoPlay: true,
-              height: 200,
+              height: 250,
               autoPlayInterval: Duration(seconds: 8),
             ),
             items: msg
@@ -38,12 +38,15 @@ class Compliments extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           alignment: Alignment.center,
-                          child: Text(
-                            m['texto'],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontStyle: FontStyle.italic,
+                          height: 140,
+                          child: SingleChildScrollView(
+                            child: Text(
+                              m['texto'],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                         ),

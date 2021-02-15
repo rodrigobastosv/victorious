@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
-import '../home/widget/footer.dart';
+import '../shared/vs_loading.dart';
 import '../shared/vs_scaffold.dart';
 import '../shared/vs_title.dart';
 
@@ -28,19 +29,14 @@ class _QuemSomosPageState extends State<QuemSomosPage> {
                 VSTitle('Quem somos'),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(
-                      texto,
-                      style: TextStyle(fontSize: 18),
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Html(data: texto),
                   ),
                 ),
               ],
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return VSLoading();
           }
         },
       ),
