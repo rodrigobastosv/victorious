@@ -1,36 +1,30 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 
 import '../../../extension/extensions.dart';
-import 'post_detail.dart';
+import '../../../locations.dart';
 
 class Post extends StatelessWidget {
   Post({
+    this.id,
     this.data,
-    this.imagem,
-    this.texto,
-    this.titulo,
   });
 
-  final Timestamp data;
-  final String imagem;
-  final String texto;
-  final String titulo;
+  final String id;
+  final Map<String, dynamic> data;
 
   @override
   Widget build(BuildContext context) {
-    final date = data.toDate().toString();
+    final date = data['data'].toDate().toString();
     final dateFormatted = date.formatDate();
     return InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute<Widget>(
-          builder: (buildContext) => PostDetail(
-            data: data,
-            imagem: imagem,
-            texto: texto,
-            titulo: titulo,
-          ),
+      onTap: () => context.beamTo(
+        BlogLocation(
+          pathParameters: {
+            'postId': id,
+          },
+          pathBlueprint: 'blog/:postId',
+          data: data,
         ),
       ),
       child: Padding(
@@ -43,7 +37,7 @@ class Post extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(imagem),
+                  image: NetworkImage(data['imagem']),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -64,7 +58,7 @@ class Post extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      titulo,
+                      data['titulo'],
                       style: TextStyle(
                         fontSize: 30,
                         fontFamily: 'Heading Pro',

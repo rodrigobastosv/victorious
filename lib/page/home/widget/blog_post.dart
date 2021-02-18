@@ -6,6 +6,7 @@ import '../../blog/widget/post_detail.dart';
 
 class BlogPost extends StatelessWidget {
   BlogPost({
+    this.postId,
     this.data,
     this.imagem,
     this.texto,
@@ -13,6 +14,7 @@ class BlogPost extends StatelessWidget {
   });
 
   final Timestamp data;
+  final String postId;
   final String imagem;
   final String texto;
   final String titulo;
@@ -25,12 +27,7 @@ class BlogPost extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute<Widget>(
-          builder: (buildContext) => PostDetail(
-            data: data,
-            imagem: imagem,
-            texto: texto,
-            titulo: titulo,
-          ),
+          builder: (buildContext) => PostDetail(postId),
         ),
       ),
       child: Container(

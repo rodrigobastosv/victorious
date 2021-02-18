@@ -3,60 +3,81 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import '../../../extension/extensions.dart';
+import '../../shared/vs_loading.dart';
 import '../../shared/vs_scaffold.dart';
 
-class PostDetail extends StatelessWidget {
-  PostDetail({
-    this.data,
-    this.imagem,
-    this.texto,
-    this.titulo,
-  });
+class PostDetail extends StatefulWidget {
+  PostDetail(
+    this.postId,
+  );
 
-  final Timestamp data;
-  final String imagem;
-  final String texto;
-  final String titulo;
+  final String postId;
+
+  @override
+  _PostDetailState createState() => _PostDetailState();
+}
+
+class _PostDetailState extends State<PostDetail> {
+  Future<DocumentSnapshot> docFuture;
+
+  @override
+  void initState() {
+    docFuture =
+        FirebaseFirestore.instance.collection('blog').doc(widget.postId).get();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final date = data.toDate().toString();
-    final dateFormatted = date.formatDateBig();
     return VSScaffold(
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 16),
-                Text(
-                  titulo,
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontFamily: 'Heading Pro',
+      body: FutureBuilder(
+        future: docFuture,
+        builder: (_, snapshot) {
+          if (snapshot.hasData) {
+            final docData = snapshot.data;
+            final date = docData['data'].toDate().toString();
+            final dateFormatted = date.formatDateBig();
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 16),
+                      Text(
+                        docData['titulo'],
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontFamily: 'Heading Pro',
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        dateFormatted,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontFamily: 'Heading Pro',
+                          color: Theme.of(context).colorScheme.primaryVariant,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Image.network(docData['imagem']),
+                      SizedBox(height: 16),
+                      Html(data: docData['texto']),
+                      SizedBox(height: 24),
+                    ],
                   ),
                 ),
-                SizedBox(height: 4),
-                Text(
-                  dateFormatted,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'Heading Pro',
-                    color: Theme.of(context).colorScheme.primaryVariant,
-                  ),
-                ),
-                SizedBox(height: 16),
-                Image.network(imagem),
-                SizedBox(height: 16),
-                Html(data: texto),
-                SizedBox(height: 24),
-              ],
-            ),
-          ),
-        ),
+              ),
+            );
+          } else {
+            return Center(
+              child: VSLoading(),
+            );
+          }
+        },
       ),
     );
   }

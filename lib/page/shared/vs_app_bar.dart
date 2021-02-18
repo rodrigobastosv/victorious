@@ -1,13 +1,8 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 
-import '../blog/blog_page.dart';
-import '../calendar/calendar_page.dart';
-import '../contact/contact_page.dart';
-import '../fighters/fighters_page.dart';
-import '../home/home_page.dart';
+import '../../locations.dart';
 import '../home/widget/header_hoverable_button.dart';
-import '../quem_somos/quem_somos_page.dart';
-import '../videos/videos_page.dart';
 
 class VSAppBar extends StatelessWidget {
   @override
@@ -18,11 +13,8 @@ class VSAppBar extends StatelessWidget {
           'web/images/logo.png',
           height: 36,
         ),
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute<Widget>(
-            builder: (buildContext) => HomePage(),
-          ),
+        onTap: () => context.beamTo(
+          HomeLocation(),
         ),
       ),
       leadingWidth: 0,
@@ -30,56 +22,38 @@ class VSAppBar extends StatelessWidget {
       actions: [
         HeaderHoverableButton(
           text: 'Quem somos',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => QuemSomosPage(),
-            ),
+          onPressed: () => context.beamTo(
+            QuemSomosLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Lutadores',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => FightersPage(),
-            ),
+          onPressed: () => context.beamTo(
+            FightersLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Calendário',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => CalendarPage(),
-            ),
+          onPressed: () => context.beamTo(
+            CalendarLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Vídeos',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => VideosPage(),
-            ),
+          onPressed: () => context.beamTo(
+            VideosLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Blog',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => BlogPage(),
-            ),
+          onPressed: () => context.beamTo(
+            BlogLocation(pathBlueprint: '/blog'),
           ),
         ),
         HeaderHoverableButton(
           text: 'Contato',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (buildContext) => ContactPage(),
-            ),
+          onPressed: () => context.beamTo(
+            ContactLocation(),
           ),
         ),
         const SizedBox(width: 16),

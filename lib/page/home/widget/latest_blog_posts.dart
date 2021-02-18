@@ -27,6 +27,7 @@ class LatestBlogPosts extends StatelessWidget {
                 final blogPosts = docs
                     .map(
                       (blogPost) => BlogPost(
+                        postId: blogPost.id,
                         data: blogPost.data()['data'],
                         imagem: blogPost.data()['imagem'],
                         texto: blogPost.data()['texto'],

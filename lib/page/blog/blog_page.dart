@@ -38,10 +38,8 @@ class _BlogPageState extends State<BlogPage> {
                       padding: EdgeInsets.only(bottom: 24),
                       itemCount: docs.length,
                       itemBuilder: (context, i) => Post(
-                        data: docs[i].data()['data'],
-                        imagem: docs[i].data()['imagem'],
-                        texto: docs[i].data()['texto'],
-                        titulo: docs[i].data()['titulo'],
+                        id: docs[i].id,
+                        data: docs[i].data(),
                       ),
                       separatorBuilder: (context, index) => Divider(height: 1),
                     );
