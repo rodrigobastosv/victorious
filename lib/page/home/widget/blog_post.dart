@@ -55,7 +55,7 @@ class BlogPost extends StatelessWidget {
                     Text(
                       dateFormatted,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 20,
                         fontFamily: 'Heading Pro',
                         color: Theme.of(context).colorScheme.primaryVariant,
                       ),
@@ -67,9 +67,8 @@ class BlogPost extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        height: 1.1,
+                        fontSize: 26,
+                        fontFamily: 'Heading Pro',
                       ),
                     ),
                   ],

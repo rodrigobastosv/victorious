@@ -46,8 +46,8 @@ class _VideosPageState extends State<VideosPage> {
                     },
                     itemCount: docs.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1,
-                      crossAxisCount: 4,
+                      childAspectRatio: 1.5,
+                      crossAxisCount: 3,
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
                     ),

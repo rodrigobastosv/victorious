@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +9,13 @@ class HeaderHoverableButton extends StatelessWidget {
     Key key,
     this.onHover,
     @required this.text,
+    @required this.locationKey,
     @required this.onPressed,
   }) : super(key: key);
 
   final PointerEnterEvent onHover;
   final String text;
+  final String locationKey;
   final VoidCallback onPressed;
 
   @override
@@ -42,6 +45,9 @@ class HeaderHoverableButton extends StatelessWidget {
         cutLength: 15,
         child: InkWell(
           child: Container(
+            color: Beamer.of(context).currentLocation.uri.contains(locationKey)
+                ? Theme.of(context).colorScheme.primaryVariant
+                : null,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             alignment: Alignment.center,
             child: Text(

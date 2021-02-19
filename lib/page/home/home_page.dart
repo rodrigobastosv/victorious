@@ -17,9 +17,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 24),
+            const SizedBox(height: 8),
             Banners(),
-            const SizedBox(height: 56),
+            const SizedBox(height: 32),
             LatestBlogPosts(),
             const SizedBox(height: 80),
             LatestInstagramPosts(),

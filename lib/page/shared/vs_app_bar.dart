@@ -22,36 +22,42 @@ class VSAppBar extends StatelessWidget {
       actions: [
         HeaderHoverableButton(
           text: 'Quem somos',
+          locationKey: 'quem-somos',
           onPressed: () => context.beamTo(
             QuemSomosLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Lutadores',
+          locationKey: 'lutadores',
           onPressed: () => context.beamTo(
             FightersLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Calendário',
+          locationKey: 'calendario',
           onPressed: () => context.beamTo(
             CalendarLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Vídeos',
+          locationKey: 'videos',
           onPressed: () => context.beamTo(
             VideosLocation(),
           ),
         ),
         HeaderHoverableButton(
           text: 'Blog',
+          locationKey: 'blog',
           onPressed: () => context.beamTo(
             BlogLocation(pathBlueprint: '/blog'),
           ),
         ),
         HeaderHoverableButton(
           text: 'Contato',
+          locationKey: 'contato',
           onPressed: () => context.beamTo(
             ContactLocation(),
           ),

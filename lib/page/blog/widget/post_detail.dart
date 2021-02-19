@@ -40,35 +40,44 @@ class _PostDetailState extends State<PostDetail> {
             return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 16),
-                      Text(
-                        docData['titulo'],
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontFamily: 'Heading Pro',
-                        ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 48),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 24),
+                          Text(
+                            docData['titulo'],
+                            style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: 'Heading Pro',
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            dateFormatted,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontFamily: 'Heading Pro',
+                              color:
+                                  Theme.of(context).colorScheme.primaryVariant,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Image.network(docData['imagem']),
+                        ],
                       ),
-                      SizedBox(height: 4),
-                      Text(
-                        dateFormatted,
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontFamily: 'Heading Pro',
-                          color: Theme.of(context).colorScheme.primaryVariant,
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Image.network(docData['imagem']),
-                      SizedBox(height: 16),
-                      Html(data: docData['texto']),
-                      SizedBox(height: 24),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 16),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: Html(data: docData['texto']),
+                    ),
+                    SizedBox(height: 24),
+                  ],
                 ),
               ),
             );

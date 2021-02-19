@@ -26,10 +26,14 @@ class _QuemSomosPageState extends State<QuemSomosPage> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                VSTitle('Quem somos'),
+                SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: VSTitle('Quem somos'),
+                ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 42),
                     child: Html(data: texto),
                   ),
                 ),
