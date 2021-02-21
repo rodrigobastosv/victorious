@@ -13,7 +13,7 @@ class VSTitle extends StatelessWidget {
         title,
         style: TextStyle(
           fontFamily: 'Heading Pro',
-          fontSize: MediaQuery.of(context).size.width > 768 ? 32 : 20,
+          fontSize: MediaQuery.of(context).size.width > 600 ? 32 : 24,
         ),
       ),
     );

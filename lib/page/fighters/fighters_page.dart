@@ -76,6 +76,7 @@ class _FightersPageState extends State<FightersPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: TextFormField(
           decoration: InputDecoration(
+            isDense: true,
             hintText: 'Buscar Lutador',
             prefixIcon: Center(
               widthFactor: 2,
@@ -95,7 +96,7 @@ class _FightersPageState extends State<FightersPage> {
       children: [
         FlutterToggleTab(
           borderRadius: 0,
-          width: 50,
+          width: MediaQuery.of(context).size.width > 600 ? 80 : 180,
           height: 40,
           initialIndex: selectedLabelIndex,
           selectedTextStyle: TextStyle(
@@ -138,8 +139,18 @@ class _FightersPageState extends State<FightersPage> {
             child: GridView.builder(
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 2,
-                crossAxisCount: 3,
+                childAspectRatio: MediaQuery.of(context).size.width > 600
+                    ? 2.8
+                    : MediaQuery.of(context).size.width >= 425
+                        ? 2
+                        : MediaQuery.of(context).size.width > 320
+                            ? 1.3
+                            : 1,
+                crossAxisCount: MediaQuery.of(context).size.width > 1024
+                    ? 3
+                    : MediaQuery.of(context).size.width >= 768
+                        ? 2
+                        : 1,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
               ),
