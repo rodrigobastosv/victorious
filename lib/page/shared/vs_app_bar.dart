@@ -7,6 +7,15 @@ import '../home/widget/header_hoverable_button.dart';
 class VSAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return MediaQuery.of(context).size.width > 768
+        ? _VSAppBarDesktop()
+        : _VSAppBarMobile();
+  }
+}
+
+class _VSAppBarDesktop extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return AppBar(
       title: InkWell(
         child: Image.asset(
@@ -64,6 +73,24 @@ class VSAppBar extends StatelessWidget {
         ),
         const SizedBox(width: 16),
       ],
+    );
+  }
+}
+
+class _VSAppBarMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: InkWell(
+        child: Image.asset(
+          'web/images/logo.png',
+          height: 36,
+        ),
+        onTap: () => context.beamTo(
+          HomeLocation(),
+        ),
+      ),
+      titleSpacing: 0,
     );
   }
 }

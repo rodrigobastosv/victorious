@@ -25,7 +25,7 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
             stream: FirebaseFirestore.instance
                 .collection('youtube_videos')
                 .orderBy('data', descending: true)
-                .limit(3)
+                .limit(4)
                 .snapshots(),
             builder: (_, snapshot) {
               if (snapshot.hasData) {
@@ -35,7 +35,10 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
                   final idVideo = YoutubePlayerController.convertUrlToId(
                       video.data()['video_url']);
                   return SizedBox(
-                    height: 240,
+                    height: (MediaQuery.of(context).size.width > 600 &&
+                            MediaQuery.of(context).size.width <= 768)
+                        ? 160
+                        : 240,
                     child: YoutubePlayerIFrame(
                       controller: YoutubePlayerController(
                         initialVideoId: idVideo,

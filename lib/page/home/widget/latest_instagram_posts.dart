@@ -24,21 +24,19 @@ class LatestInstagramPosts extends StatelessWidget {
               if (snapshot.hasData) {
                 final data = snapshot.data;
                 final docs = data.docs;
-                final instagramPosts = docs.map(
-                  (doc) => InstagramPost(
-                    comentario: doc.data()['comentario'],
-                    descricao: doc.data()['descricao'],
-                    link: doc.data()['link_postagem'],
-                    urlFoto: doc.data()['url_foto'],
-                  ),
-                ).toList();
-                return Wrap(
-                  spacing: 24,
-                  runSpacing: 24,
-                  children: [
-                    ...instagramPosts,
-                  ],
-                );
+                final instagramPosts = docs
+                    .map(
+                      (doc) => InstagramPost(
+                        comentario: doc.data()['comentario'],
+                        descricao: doc.data()['descricao'],
+                        link: doc.data()['link_postagem'],
+                        urlFoto: doc.data()['url_foto'],
+                      ),
+                    )
+                    .toList();
+                return MediaQuery.of(context).size.width > 768
+                    ? _PostsDesktop(instagramPosts)
+                    : _PostsMobile(instagramPosts);
               } else {
                 return VSLoading();
               }
@@ -46,6 +44,46 @@ class LatestInstagramPosts extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _PostsDesktop extends StatelessWidget {
+  final Iterable instagramPosts;
+
+  const _PostsDesktop(this.instagramPosts);
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 24,
+      runSpacing: 24,
+      children: [
+        ...instagramPosts,
+      ],
+    );
+  }
+}
+
+class _PostsMobile extends StatelessWidget {
+  final Iterable instagramPosts;
+
+  const _PostsMobile(this.instagramPosts);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: EdgeInsets.all(4),
+        child: Wrap(
+          spacing: 24,
+          runSpacing: 24,
+          children: [
+            ...instagramPosts,
+          ],
+        ),
+      ),
     );
   }
 }

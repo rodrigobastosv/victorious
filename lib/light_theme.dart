@@ -20,6 +20,7 @@ final lightTheme = ThemeData(
   ),
   appBarTheme: AppBarTheme(
     color: Colors.black,
+    iconTheme: IconThemeData(color: Colors.yellow[800]),
     textTheme: TextTheme(
       button: TextStyle(
         color: Colors.white,

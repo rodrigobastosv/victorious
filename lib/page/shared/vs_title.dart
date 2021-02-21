@@ -8,12 +8,12 @@ class VSTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       child: Text(
         title,
         style: TextStyle(
           fontFamily: 'Heading Pro',
-          fontSize: 32,
+          fontSize: MediaQuery.of(context).size.width > 768 ? 32 : 20,
         ),
       ),
     );

@@ -35,13 +35,9 @@ class LatestBlogPosts extends StatelessWidget {
                       ),
                     )
                     .toList();
-                return Wrap(
-                  spacing: 24,
-                  runSpacing: 24,
-                  children: [
-                    ...blogPosts,
-                  ],
-                );
+                return MediaQuery.of(context).size.width > 768
+                    ? _PostsDesktop(blogPosts)
+                    : _PostsMobile(blogPosts);
               } else {
                 return VSLoading();
               }
@@ -49,6 +45,46 @@ class LatestBlogPosts extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _PostsDesktop extends StatelessWidget {
+  final Iterable blogPosts;
+
+  const _PostsDesktop(this.blogPosts);
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 24,
+      runSpacing: 24,
+      children: [
+        ...blogPosts,
+      ],
+    );
+  }
+}
+
+class _PostsMobile extends StatelessWidget {
+  final Iterable blogPosts;
+
+  const _PostsMobile(this.blogPosts);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: EdgeInsets.all(4),
+        child: Wrap(
+          spacing: 24,
+          runSpacing: 24,
+          children: [
+            ...blogPosts,
+          ],
+        ),
+      ),
     );
   }
 }

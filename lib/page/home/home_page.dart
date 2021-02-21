@@ -12,24 +12,25 @@ import 'widget/sponsors.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final space = MediaQuery.of(context).size.width > 600 ? 80.0 : 40.0;
     return VSScaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Banners(),
-            const SizedBox(height: 32),
+            SizedBox(height: 32),
             LatestBlogPosts(),
-            const SizedBox(height: 80),
+            SizedBox(height: space),
             LatestInstagramPosts(),
-            const SizedBox(height: 80),
+            SizedBox(height: space),
             LatestYoutubeVideos(),
-            const SizedBox(height: 80),
+            SizedBox(height: space),
             Compliments(),
-            const SizedBox(height: 56),
+            SizedBox(height: space-24.0),
             Sponsors(),
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
             Footer(),
           ],
         ),

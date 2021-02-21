@@ -66,6 +66,7 @@ class Footer extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       '© 2020 Victorious. Todos os direitos reservados.',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
                       ),

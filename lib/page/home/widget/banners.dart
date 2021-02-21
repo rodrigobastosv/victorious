@@ -19,7 +19,11 @@ class Banners extends StatelessWidget {
             options: CarouselOptions(
               autoPlay: true,
               enlargeCenterPage: true,
-              height: 500,
+              height: MediaQuery.of(context).size.width > 768
+                  ? 500
+                  : MediaQuery.of(context).size.width > 600
+                      ? 300
+                      : 150,
             ),
             items: urls
                 .map(

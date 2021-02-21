@@ -31,14 +31,14 @@ class BlogPost extends StatelessWidget {
         ),
       ),
       child: Container(
-        height: 200,
-        width: 550,
+        height: MediaQuery.of(context).size.width > 768 ? 200 : 100,
+        width: MediaQuery.of(context).size.width > 768 ? 550 : 400,
         child: Card(
           child: Row(
             children: [
               Container(
-                width: 300,
-                height: 200,
+                width: MediaQuery.of(context).size.width > 768 ? 300 : 150,
+                height: MediaQuery.of(context).size.width > 768 ? 200 : 100,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(imagem),
@@ -51,11 +51,18 @@ class BlogPost extends StatelessWidget {
                 padding: EdgeInsets.all(8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: MediaQuery.of(context).size.width > 768
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
                   children: [
                     Text(
                       dateFormatted,
+                      textAlign: MediaQuery.of(context).size.width > 768
+                          ? TextAlign.center
+                          : TextAlign.start,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize:
+                            MediaQuery.of(context).size.width > 768 ? 20 : 14,
                         fontFamily: 'Heading Pro',
                         color: Theme.of(context).colorScheme.primaryVariant,
                       ),
@@ -65,9 +72,12 @@ class BlogPost extends StatelessWidget {
                       titulo,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
+                      textAlign: MediaQuery.of(context).size.width > 768
+                          ? TextAlign.center
+                          : TextAlign.start,
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize:
+                            MediaQuery.of(context).size.width > 768 ? 26 : 18,
                         fontFamily: 'Heading Pro',
                       ),
                     ),
