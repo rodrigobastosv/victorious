@@ -1,5 +1,4 @@
 import 'package:beamer/beamer.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../locations.dart';

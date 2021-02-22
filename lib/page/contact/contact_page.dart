@@ -13,6 +13,12 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
+  String _nome;
+  String _email;
+  String _mensagem;
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final fontSize = MediaQuery.of(context).size.width > 768 ? 18.0 : 14.0;
@@ -107,61 +113,108 @@ class _ContactPageState extends State<ContactPage> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Deixe sua mensagem:',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 16),
-                            SizedBox(
-                              width: 300,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  labelText: 'Seu nome',
-                                  isDense: true,
+                      Form(
+                        key: _formKey,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Deixe sua mensagem:',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 16),
-                            SizedBox(
-                              width: 300,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  labelText: 'Email',
-                                  isDense: true,
+                              SizedBox(height: 16),
+                              SizedBox(
+                                width: 300,
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    labelText: 'Seu nome',
+                                    isDense: true,
+                                  ),
+                                  validator: (nome) =>
+                                      nome.isEmpty ? 'Campo Obrigatório' : null,
+                                  onSaved: (nome) => _nome = nome,
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 16),
-                            SizedBox(
-                              width: 500,
-                              child: TextField(
-                                minLines: 5,
-                                maxLines: 5,
-                                decoration: InputDecoration(
-                                  labelText: 'Mensagem',
-                                  isDense: true,
+                              SizedBox(height: 16),
+                              SizedBox(
+                                width: 300,
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    labelText: 'Email',
+                                    isDense: true,
+                                  ),
+                                  validator: (email) => email.isEmpty
+                                      ? 'Campo Obrigatório'
+                                      : null,
+                                  onSaved: (email) => _email = email,
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 16),
-                            RaisedButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(0),
+                              SizedBox(height: 16),
+                              SizedBox(
+                                width: 500,
+                                child: TextFormField(
+                                  minLines: 5,
+                                  maxLines: 5,
+                                  decoration: InputDecoration(
+                                    labelText: 'Mensagem',
+                                    isDense: true,
+                                  ),
+                                  validator: (msg) =>
+                                      msg.isEmpty ? 'Campo Obrigatório' : null,
+                                  onSaved: (msg) => _mensagem = msg,
+                                ),
                               ),
-                              color:
-                                  Theme.of(context).colorScheme.primaryVariant,
-                              child: Text('Enviar'),
-                              onPressed: () {},
-                            ),
-                          ],
+                              SizedBox(height: 16),
+                              RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryVariant,
+                                child: Text('Enviar'),
+                                onPressed: () async {
+                                  final form = _formKey.currentState;
+                                  if (form.validate()) {
+                                    form.save();
+                                    await FirebaseFirestore.instance
+                                        .collection('emails')
+                                        .add(
+                                      {
+                                        'to': 'victoriousfcmma@gmail.com',
+                                        'message': {
+                                          'subject': '$_nome - $_email',
+                                          'text': _mensagem,
+                                          'html': _mensagem,
+                                        }
+                                      },
+                                    );
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'E-mail enviado!',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        behavior: SnackBarBehavior.floating,
+                                        backgroundColor:
+                                            Theme.of(context).primaryColor,
+                                            width: 200,
+                                      ),
+                                    );
+                                    form.reset();
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
