@@ -10,8 +10,12 @@ class EventsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints:
-          BoxConstraints(maxWidth: MediaQuery.of(context).size.width - 512),
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width >= 1024
+            ? MediaQuery.of(context).size.width - 512
+            : MediaQuery.of(context).size.width,
+        maxHeight: 400,
+      ),
       child: ListView.builder(
         shrinkWrap: true,
         itemBuilder: (_, i) {
@@ -20,12 +24,15 @@ class EventsList extends StatelessWidget {
           final dia = formatDate(data, [dd]);
           final mes = formatDate(data, [M]);
           return Padding(
-            padding: const EdgeInsets.all(16),
+            padding: MediaQuery.of(context).size.width > 768
+                ? EdgeInsets.all(16)
+                : EdgeInsets.zero,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       dia,
@@ -41,21 +48,33 @@ class EventsList extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: 24),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width > 768 ? 24 : 8,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      docs[i].data()['nome'],
-                      style: TextStyle(
-                        fontSize: 30,
-                        height: 1,
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width >= 1024
+                            ? MediaQuery.of(context).size.width - 604
+                            : MediaQuery.of(context).size.width - 140,
+                      ),
+                      child: Text(
+                        docs[i].data()['nome'],
+                        style: TextStyle(
+                          fontSize:
+                              MediaQuery.of(context).size.width > 768 ? 30 : 20,
+                          height: 1,
+                        ),
                       ),
                     ),
                     SizedBox(height: 6),
                     ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width - 604,
+                        maxWidth: MediaQuery.of(context).size.width >= 1024
+                            ? MediaQuery.of(context).size.width - 604
+                            : MediaQuery.of(context).size.width - 130,
                       ),
                       child: Text(
                         docs[i].data()['descricao'],

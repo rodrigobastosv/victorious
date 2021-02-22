@@ -47,7 +47,11 @@ class _VideosPageState extends State<VideosPage> {
                     itemCount: docs.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 1.5,
-                      crossAxisCount: 3,
+                      crossAxisCount: MediaQuery.of(context).size.width > 1024
+                          ? 3
+                          : MediaQuery.of(context).size.width >= 768
+                              ? 2
+                              : 1,
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
                     ),

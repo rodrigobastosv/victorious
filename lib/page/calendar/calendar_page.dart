@@ -18,17 +18,17 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return VSScaffold(
-      body: SafeArea(
-        child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance
-              .collection('eventos')
-              .orderBy('data')
-              .where('data', isGreaterThan: Timestamp.now())
-              .snapshots(),
-          builder: (_, snapshot) {
-            if (snapshot.hasData) {
-              final docs = snapshot.data.docs;
-              return Column(
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('eventos')
+            .orderBy('data')
+            .where('data', isGreaterThan: Timestamp.now())
+            .snapshots(),
+        builder: (_, snapshot) {
+          if (snapshot.hasData) {
+            final docs = snapshot.data.docs;
+            return SingleChildScrollView(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   VSTitle('Calendário'),
@@ -44,12 +44,12 @@ class _CalendarPageState extends State<CalendarPage> {
                     ),
                   ),
                 ],
-              );
-            } else {
-              return VSLoading();
-            }
-          },
-        ),
+              ),
+            );
+          } else {
+            return VSLoading();
+          }
+        },
       ),
     );
   }

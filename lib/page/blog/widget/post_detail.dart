@@ -29,6 +29,7 @@ class _PostDetailState extends State<PostDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final space = MediaQuery.of(context).size.width > 600 ? 32.0 : 16.0;
     return VSScaffold(
       body: FutureBuilder(
         future: docFuture,
@@ -44,7 +45,7 @@ class _PostDetailState extends State<PostDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 48),
+                      padding: EdgeInsets.symmetric(horizontal: space),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -52,7 +53,9 @@ class _PostDetailState extends State<PostDetail> {
                           Text(
                             docData['titulo'],
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize: MediaQuery.of(context).size.width > 768
+                                  ? 40
+                                  : 30,
                               fontFamily: 'Heading Pro',
                             ),
                           ),
@@ -73,7 +76,7 @@ class _PostDetailState extends State<PostDetail> {
                     ),
                     SizedBox(height: 16),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      padding: EdgeInsets.symmetric(horizontal: space - 8.0),
                       child: Html(data: docData['texto']),
                     ),
                     SizedBox(height: 24),

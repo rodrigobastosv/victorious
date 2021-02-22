@@ -15,6 +15,7 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
+    final fontSize = MediaQuery.of(context).size.width > 768 ? 18.0 : 14.0;
     return VSScaffold(
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('contato').snapshots(),
@@ -28,11 +29,14 @@ class _ContactPageState extends State<ContactPage> {
                   VSTitle('Contato'),
                   Wrap(
                     spacing: 32,
+                    runSpacing: 32,
                     children: [
                       Container(
                         padding: EdgeInsets.all(16),
                         margin: EdgeInsets.only(left: 16),
-                        width: 400,
+                        width: MediaQuery.of(context).size.width > 425
+                            ? 400
+                            : MediaQuery.of(context).size.width - 32,
                         decoration: BoxDecoration(
                           color: Theme.of(context)
                               .colorScheme
@@ -49,7 +53,7 @@ class _ContactPageState extends State<ContactPage> {
                             Text(
                               'Telefone: ${contato['telefone']}',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: fontSize,
                               ),
                             ),
                             SizedBox(height: 8),
@@ -59,7 +63,7 @@ class _ContactPageState extends State<ContactPage> {
                                 Text(
                                   'Email:',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: fontSize,
                                   ),
                                 ),
                                 InkWell(
@@ -68,7 +72,7 @@ class _ContactPageState extends State<ContactPage> {
                                   child: Text(
                                     '${contato['email']}',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: fontSize,
                                       color: Colors.blue,
                                       decoration: TextDecoration.underline,
                                     ),
@@ -119,15 +123,20 @@ class _ContactPageState extends State<ContactPage> {
                             SizedBox(
                               width: 300,
                               child: TextField(
-                                decoration:
-                                    InputDecoration(labelText: 'Seu nome'),
+                                decoration: InputDecoration(
+                                  labelText: 'Seu nome',
+                                  isDense: true,
+                                ),
                               ),
                             ),
                             SizedBox(height: 16),
                             SizedBox(
                               width: 300,
                               child: TextField(
-                                decoration: InputDecoration(labelText: 'Email'),
+                                decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  isDense: true,
+                                ),
                               ),
                             ),
                             SizedBox(height: 16),
@@ -136,8 +145,10 @@ class _ContactPageState extends State<ContactPage> {
                               child: TextField(
                                 minLines: 5,
                                 maxLines: 5,
-                                decoration:
-                                    InputDecoration(labelText: 'Mensagem'),
+                                decoration: InputDecoration(
+                                  labelText: 'Mensagem',
+                                  isDense: true,
+                                ),
                               ),
                             ),
                             SizedBox(height: 16),
@@ -175,6 +186,7 @@ class _ButtonSocial extends StatelessWidget {
   const _ButtonSocial({this.url, this.icon, this.text});
   @override
   Widget build(BuildContext context) {
+    final fontSize = MediaQuery.of(context).size.width > 768 ? 18.0 : 14.0;
     return InkWell(
       onTap: () async {
         await launch(url);
@@ -187,13 +199,14 @@ class _ButtonSocial extends StatelessWidget {
             child: FaIcon(
               icon,
               color: Colors.black,
+              size: fontSize + 8,
             ),
           ),
           SizedBox(width: 4),
           Text(
             text,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: fontSize,
             ),
           ),
         ],

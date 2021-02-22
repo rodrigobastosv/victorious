@@ -29,8 +29,9 @@ class Post extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 32),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Wrap(
+          spacing: 16,
+          runSpacing: 16,
           children: [
             Container(
               width: 300,
@@ -43,29 +44,28 @@ class Post extends StatelessWidget {
               ),
             ),
             Flexible(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      dateFormatted,
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontFamily: 'Heading Pro',
-                        color: Theme.of(context).colorScheme.primaryVariant,
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    dateFormatted,
+                    style: TextStyle(
+                      fontSize:
+                          MediaQuery.of(context).size.width > 768 ? 36 : 20,
+                      fontFamily: 'Heading Pro',
+                      color: Theme.of(context).colorScheme.primaryVariant,
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      data['titulo'],
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontFamily: 'Heading Pro',
-                      ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    data['titulo'],
+                    style: TextStyle(
+                      fontSize:
+                          MediaQuery.of(context).size.width > 768 ? 30 : 20,
+                      fontFamily: 'Heading Pro',
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
