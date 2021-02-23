@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Victorious',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       routerDelegate: BeamerRouterDelegate(
