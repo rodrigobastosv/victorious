@@ -14,8 +14,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VICTORIOUS_C1720 }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VICTORIOUS_D0EB9 }}'
           channelId: live
-          projectId: victorious-c1720
+          projectId: victorious-d0eb9
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
