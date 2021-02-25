@@ -29,9 +29,10 @@ class Post extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 32),
-        child: Wrap(
+        child: OverflowBar(
           spacing: 16,
-          runSpacing: 16,
+          overflowSpacing: 16,
+          overflowAlignment: OverflowBarAlignment.start,
           children: [
             Container(
               width: 300,
@@ -43,30 +44,27 @@ class Post extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    dateFormatted,
-                    style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.width > 768 ? 36 : 20,
-                      fontFamily: 'Heading Pro',
-                      color: Theme.of(context).colorScheme.primaryVariant,
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  dateFormatted,
+                  style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width > 768 ? 36 : 20,
+                    fontFamily: 'Heading Pro',
+                    color: Theme.of(context).colorScheme.primaryVariant,
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    data['titulo'],
-                    style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.width > 768 ? 30 : 20,
-                      fontFamily: 'Heading Pro',
-                    ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  data['titulo'],
+                  style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width > 768 ? 30 : 20,
+                    fontFamily: 'Heading Pro',
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
