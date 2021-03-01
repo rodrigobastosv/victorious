@@ -13,12 +13,14 @@ class Sponsors extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final docs = snapshot.data.docs;
-          final urls = docs.map((d) => d.data()['url']).toList();
+          final datas = docs.map((d) => d.data()).toList();
           return Center(
             child: Wrap(
               spacing: 8,
               runSpacing: 16,
-              children: urls.map((url) => SponsorsItem(url)).toList(),
+              children: datas
+                  .map((data) => SponsorsItem(data['url'], data['link']))
+                  .toList(),
             ),
           );
         } else {

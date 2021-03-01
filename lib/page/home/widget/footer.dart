@@ -61,6 +61,24 @@ class Footer extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                        InkWell(
+                          onTap: () async {
+                            await launch(contato['linkedin']);
+                          },
+                          child: FaIcon(
+                            FontAwesomeIcons.linkedin,
+                            color: Colors.white,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () async {
+                            await launch(contato['tiktok']);
+                          },
+                          child: FaIcon(
+                            FontAwesomeIcons.tiktok,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 16),

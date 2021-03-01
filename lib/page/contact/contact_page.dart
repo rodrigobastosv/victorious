@@ -110,6 +110,18 @@ class _ContactPageState extends State<ContactPage> {
                               icon: FontAwesomeIcons.youtube,
                               text: 'Youtube',
                             ),
+                            SizedBox(height: 8),
+                            _ButtonSocial(
+                              url: contato['linkedin'],
+                              icon: FontAwesomeIcons.linkedin,
+                              text: 'LinkedIn',
+                            ),
+                            SizedBox(height: 8),
+                            _ButtonSocial(
+                              url: contato['tiktok'],
+                              icon: FontAwesomeIcons.tiktok,
+                              text: 'TikTok',
+                            ),
                           ],
                         ),
                       ),
