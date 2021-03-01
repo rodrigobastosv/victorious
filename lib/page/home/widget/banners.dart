@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../shared/vs_loading.dart';
 
@@ -14,7 +15,7 @@ class Banners extends StatelessWidget {
       builder: (_, snapshot) {
         if (snapshot.hasData) {
           final docs = snapshot.data.docs;
-          final urls = docs.map((d) => d.data()['url']).toList();
+          final datas = docs.map((d) => d.data()).toList();
           return CarouselSlider(
             options: CarouselOptions(
               autoPlay: true,
@@ -25,15 +26,19 @@ class Banners extends StatelessWidget {
                       ? 300
                       : 150,
             ),
-            items: urls
+            items: datas
                 .map(
-                  (url) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 24,
-                      child: Image.network(
-                        url,
-                        fit: BoxFit.contain,
+                  (data) => GestureDetector(
+                    onTap: () =>
+                        data['link'] != null ? launch(data['link']) : null,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 24,
+                        child: Image.network(
+                          data['url'],
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),
