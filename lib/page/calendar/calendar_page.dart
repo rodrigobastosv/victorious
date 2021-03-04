@@ -20,9 +20,8 @@ class _CalendarPageState extends State<CalendarPage> {
     return VSScaffold(
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection('eventos')
-            .orderBy('data')
-            .where('data', isGreaterThan: Timestamp.now())
+            .collection('calendario')
+            .orderBy('data', descending: true)
             .snapshots(),
         builder: (_, snapshot) {
           if (snapshot.hasData) {

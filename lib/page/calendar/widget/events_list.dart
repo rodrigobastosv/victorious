@@ -2,6 +2,66 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 
+class PortugueseLocale implements Locale {
+  const PortugueseLocale();
+
+  final List<String> monthsShort = const [
+    'Jan',
+    'Fev',
+    'Mar',
+    'Abr',
+    'Mai',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Set',
+    'Out',
+    'Nov',
+    'Dez'
+  ];
+
+  final List<String> monthsLong = const [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
+
+  final List<String> daysShort = const [
+    'Seg',
+    'Ter',
+    'Qua',
+    'Qui',
+    'Sex',
+    'Sáb',
+    'Dom'
+  ];
+
+  final List<String> daysLong = const [
+    'Segunda',
+    'Terça',
+    'Quarta',
+    'Quinta',
+    'Sexta',
+    'Sábado',
+    'Domingo'
+  ];
+
+  @override
+  String get am => "AM";
+
+  @override
+  String get pm => "PM";
+}
+
 class EventsList extends StatelessWidget {
   final List<QueryDocumentSnapshot> docs;
 
@@ -22,7 +82,11 @@ class EventsList extends StatelessWidget {
           final timestamp = docs[i].data()['data'] as Timestamp;
           final data = DateTime.parse(timestamp.toDate().toString());
           final dia = formatDate(data, [dd]);
-          final mes = formatDate(data, [M]);
+          final mes = formatDate(
+            data,
+            [M],
+            locale: PortugueseLocale(),
+          );
           return Padding(
             padding: MediaQuery.of(context).size.width > 768
                 ? EdgeInsets.all(16)
