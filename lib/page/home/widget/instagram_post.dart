@@ -21,12 +21,12 @@ class InstagramPost extends StatelessWidget {
     return InkWell(
       onTap: () => launch(link),
       child: Container(
-        width: 300,
+        width: 283,
         child: Card(
           child: Column(
             children: [
               Container(
-                width: 300,
+                width: 283,
                 height: 200,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(

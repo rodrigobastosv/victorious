@@ -22,7 +22,7 @@ class Compliments extends StatelessWidget {
             options: CarouselOptions(
               autoPlay: true,
               viewportFraction: 1,
-              height: 250,
+              height: 252,
               autoPlayInterval: Duration(seconds: 8),
             ),
             items: msg

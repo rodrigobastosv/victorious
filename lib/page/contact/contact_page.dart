@@ -122,6 +122,12 @@ class _ContactPageState extends State<ContactPage> {
                               icon: FontAwesomeIcons.tiktok,
                               text: 'TikTok',
                             ),
+                            SizedBox(height: 8),
+                            _ButtonSocial(
+                              url: contato['twitch'],
+                              icon: FontAwesomeIcons.twitch,
+                              text: 'Twitch',
+                            ),
                           ],
                         ),
                       ),
@@ -257,6 +263,7 @@ class _ButtonSocial extends StatelessWidget {
         await launch(url);
       },
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 30,

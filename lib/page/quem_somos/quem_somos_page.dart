@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:victorious/page/quem_somos/widget/quem_somos_item.dart';
 
 import '../shared/vs_loading.dart';
 import '../shared/vs_scaffold.dart';
@@ -23,22 +24,31 @@ class _QuemSomosPageState extends State<QuemSomosPage> {
         builder: (_, snapshot) {
           if (snapshot.hasData) {
             final docs = snapshot.data.docs;
-            final texto = docs[0]['texto'];
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 8),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: space),
-                  child: VSTitle('Quem somos'),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: space+8.0),
-                    child: Html(data: texto),
+            final items = docs
+                .map(
+                  (item) => QuemSomosItem(
+                    imagem: item.data()['imagem'],
+                    titulo: item.data()['titulo'],
+                    subtitulo: item.data()['subtitulo'],
+                    descricao: item.data()['descricao'],
+                    isFirst: item.id == '1',
                   ),
-                ),
-              ],
+                )
+                .toList();
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 8),
+                  VSTitle('Quem somos'),
+                  Wrap(
+                    direction: Axis.vertical,
+                    spacing: 48,
+                    children: [...items],
+                  ),
+                  SizedBox(height: 24),
+                ],
+              ),
             );
           } else {
             return VSLoading();

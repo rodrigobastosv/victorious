@@ -25,7 +25,7 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
             stream: FirebaseFirestore.instance
                 .collection('youtube_videos')
                 .orderBy('data', descending: true)
-                .limit(4)
+                .limit(3)
                 .snapshots(),
             builder: (_, snapshot) {
               if (snapshot.hasData) {
@@ -38,7 +38,7 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
                     height: (MediaQuery.of(context).size.width > 600 &&
                             MediaQuery.of(context).size.width <= 768)
                         ? 160
-                        : 240,
+                        : 217,
                     child: YoutubePlayerIFrame(
                       controller: YoutubePlayerController(
                         initialVideoId: idVideo,

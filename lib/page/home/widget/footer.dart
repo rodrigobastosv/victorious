@@ -79,6 +79,15 @@ class Footer extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                        InkWell(
+                          onTap: () async {
+                            await launch(contato['twitch']);
+                          },
+                          child: FaIcon(
+                            FontAwesomeIcons.twitch,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 16),

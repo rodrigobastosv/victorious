@@ -11,7 +11,7 @@ class LatestInstagramPosts extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        VSTitle('Posts mais recentes no Instagram'),
+        VSTitle('Destaques no Instagram'),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: StreamBuilder<QuerySnapshot>(

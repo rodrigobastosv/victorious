@@ -32,7 +32,7 @@ class BlogPost extends StatelessWidget {
       ),
       child: Container(
         height: MediaQuery.of(context).size.width > 768 ? 200 : 100,
-        width: MediaQuery.of(context).size.width > 768 ? 550 : 400,
+        width: MediaQuery.of(context).size.width > 768 ? 590 : 400,
         child: Card(
           child: Row(
             children: [
@@ -47,7 +47,7 @@ class BlogPost extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 250,
+                width: 290,
                 padding: EdgeInsets.all(8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
