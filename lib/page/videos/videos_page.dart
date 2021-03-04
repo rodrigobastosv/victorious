@@ -9,9 +9,10 @@ import '../shared/vs_title.dart';
 
 final categorias = [
   'Todos',
-  'Diversos',
-  'Entrevistas',
-  'Eventos',
+  'TBT da Luta',
+  'Podcast Victorious',
+  'Caminho pra luta',
+  'Geral',
 ];
 
 class VideosPage extends StatefulWidget {
