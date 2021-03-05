@@ -101,6 +101,7 @@ class _VideosPageState extends State<VideosPage> {
               initialVideoId: idVideo,
               params: YoutubePlayerParams(
                 showFullscreenButton: true,
+                autoPlay: false,
               ),
             ),
           );

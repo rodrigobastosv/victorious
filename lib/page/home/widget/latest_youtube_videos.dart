@@ -44,6 +44,7 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
                         initialVideoId: idVideo,
                         params: YoutubePlayerParams(
                           showFullscreenButton: true,
+                          autoPlay: false,
                         ),
                       ),
                     ),
