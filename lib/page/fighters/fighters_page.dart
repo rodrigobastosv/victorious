@@ -140,12 +140,12 @@ class _FightersPageState extends State<FightersPage> {
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 childAspectRatio: MediaQuery.of(context).size.width > 600
-                    ? 2.8
-                    : MediaQuery.of(context).size.width >= 425
-                        ? 2
+                    ? 2
+                    : MediaQuery.of(context).size.width > 425
+                        ? 1.2
                         : MediaQuery.of(context).size.width > 320
-                            ? 1.3
-                            : 1,
+                            ? 1.1
+                            : 0.9,
                 crossAxisCount: MediaQuery.of(context).size.width > 1024
                     ? 3
                     : MediaQuery.of(context).size.width >= 768
