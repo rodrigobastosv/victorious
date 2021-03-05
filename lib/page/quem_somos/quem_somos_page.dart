@@ -17,7 +17,7 @@ class QuemSomosPage extends StatefulWidget {
 class _QuemSomosPageState extends State<QuemSomosPage> {
   @override
   Widget build(BuildContext context) {
-    final space = MediaQuery.of(context).size.width > 600 ? 32.0 : 0.0;
+    final space = MediaQuery.of(context).size.width > 768 ? 16.0 : 0.0;
     return VSScaffold(
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('quem_somos').snapshots(),
@@ -36,18 +36,25 @@ class _QuemSomosPageState extends State<QuemSomosPage> {
                 )
                 .toList();
             return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 8),
-                  VSTitle('Quem somos'),
-                  Wrap(
-                    direction: Axis.vertical,
-                    spacing: 48,
-                    children: [...items],
-                  ),
-                  SizedBox(height: 24),
-                ],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: space),
+                alignment: Alignment.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 8),
+                    VSTitle('Quem somos'),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: space),
+                      child: Wrap(
+                        direction: Axis.vertical,
+                        spacing: 48,
+                        children: [...items],
+                      ),
+                    ),
+                    SizedBox(height: 24),
+                  ],
+                ),
               ),
             );
           } else {
