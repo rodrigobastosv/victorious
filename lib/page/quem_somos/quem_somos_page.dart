@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:victorious/page/quem_somos/widget/quem_somos_item.dart';
 
 import '../shared/vs_loading.dart';
 import '../shared/vs_scaffold.dart';
 import '../shared/vs_title.dart';
+import 'widget/quem_somos_item.dart';
 
 class QuemSomosPage extends StatefulWidget {
   QuemSomosPage({Key key}) : super(key: key);

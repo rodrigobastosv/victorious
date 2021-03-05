@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:beamer/beamer.dart';
 import '../../../extension/extensions.dart';
-import '../../blog/widget/post_detail.dart';
+import '../../../locations.dart';
 
 class BlogPost extends StatelessWidget {
   BlogPost({
@@ -24,10 +24,12 @@ class BlogPost extends StatelessWidget {
     final date = data.toDate().toString();
     final dateFormatted = date.formatDate();
     return InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute<Widget>(
-          builder: (buildContext) => PostDetail(postId),
+      onTap: () => context.beamTo(
+        BlogLocation(
+          pathParameters: {
+            'postId': postId,
+          },
+          pathBlueprint: 'blog/:postId',
         ),
       ),
       child: Container(
