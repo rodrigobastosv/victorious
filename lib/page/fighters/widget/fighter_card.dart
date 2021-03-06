@@ -48,17 +48,19 @@ class _CardDesktop extends StatelessWidget {
               SizedBox(height: 2),
               ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width > 1240
-                      ? 210
-                      : MediaQuery.of(context).size.width > 1024
-                          ? 300
-                          : MediaQuery.of(context).size.width > 900
-                              ? 250
-                              : MediaQuery.of(context).size.width > 767
-                                  ? 180
-                                  : MediaQuery.of(context).size.width >= 425
-                                      ? 260
-                                      : 180,
+                  maxWidth: MediaQuery.of(context).size.width > 1360
+                      ? 260
+                      : MediaQuery.of(context).size.width > 1240
+                          ? 210
+                          : MediaQuery.of(context).size.width > 1024
+                              ? 300
+                              : MediaQuery.of(context).size.width > 900
+                                  ? 250
+                                  : MediaQuery.of(context).size.width > 767
+                                      ? 180
+                                      : MediaQuery.of(context).size.width >= 425
+                                          ? 260
+                                          : 180,
                 ),
                 child: Text(
                   fighterDoc.data()['bio'],
