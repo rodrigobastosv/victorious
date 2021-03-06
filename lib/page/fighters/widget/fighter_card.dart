@@ -8,7 +8,7 @@ class FighterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width > 600
+    return MediaQuery.of(context).size.width > 475
         ? _CardDesktop(fighterDoc)
         : _CardMobile(fighterDoc);
   }
@@ -48,11 +48,21 @@ class _CardDesktop extends StatelessWidget {
               SizedBox(height: 2),
               ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width > 768 ? 300 : 180,
+                  maxWidth: MediaQuery.of(context).size.width > 1240
+                      ? 210
+                      : MediaQuery.of(context).size.width > 1024
+                          ? 300
+                          : MediaQuery.of(context).size.width > 900
+                              ? 250
+                              : MediaQuery.of(context).size.width > 767
+                                  ? 180
+                                  : MediaQuery.of(context).size.width >= 425
+                                      ? 260
+                                      : 180,
                 ),
                 child: Text(
                   fighterDoc.data()['bio'],
-                  maxLines: 2,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Theme.of(context).textTheme.caption.color,
@@ -115,7 +125,7 @@ class _CardMobile extends StatelessWidget {
                 SizedBox(height: 2),
                 Text(
                   fighterDoc.data()['bio'],
-                  maxLines: 2,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: TextStyle(

@@ -139,18 +139,28 @@ class _FightersPageState extends State<FightersPage> {
             child: GridView.builder(
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: MediaQuery.of(context).size.width > 600
-                    ? 2
-                    : MediaQuery.of(context).size.width > 425
-                        ? 1.2
-                        : MediaQuery.of(context).size.width > 320
-                            ? 1.1
-                            : 0.9,
-                crossAxisCount: MediaQuery.of(context).size.width > 1024
-                    ? 3
-                    : MediaQuery.of(context).size.width >= 768
-                        ? 2
-                        : 1,
+                childAspectRatio: MediaQuery.of(context).size.width > 1240
+                    ? 2.4
+                    : MediaQuery.of(context).size.width > 900
+                        ? 2.4
+                        : MediaQuery.of(context).size.width > 767
+                            ? 1.8
+                            : MediaQuery.of(context).size.width > 600
+                                ? 3
+                                : MediaQuery.of(context).size.width > 475
+                                    ? 2
+                                    : MediaQuery.of(context).size.width > 320
+                                        ? 1.1
+                                        : 0.9,
+                crossAxisCount: MediaQuery.of(context).size.width > 2100
+                    ? 5
+                    : MediaQuery.of(context).size.width > 1600
+                        ? 4
+                        : MediaQuery.of(context).size.width > 1240
+                            ? 3
+                            : MediaQuery.of(context).size.width >= 768
+                                ? 2
+                                : 1,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
               ),
