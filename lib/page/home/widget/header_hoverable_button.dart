@@ -27,7 +27,7 @@ class HeaderHoverableButton extends StatelessWidget {
         child: InkWell(
           child: Container(
             color: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             alignment: Alignment.center,
             child: Text(
               text,
@@ -48,7 +48,7 @@ class HeaderHoverableButton extends StatelessWidget {
             color: Beamer.of(context).currentLocation.uri.contains(locationKey)
                 ? Theme.of(context).colorScheme.primaryVariant
                 : null,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             alignment: Alignment.center,
             child: Text(
               text,

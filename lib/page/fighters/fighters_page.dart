@@ -101,8 +101,11 @@ class _FightersPageState extends State<FightersPage> {
           initialIndex: selectedLabelIndex,
           selectedTextStyle: TextStyle(
             fontWeight: FontWeight.w700,
+            fontSize: 13,
           ),
-          unSelectedTextStyle: TextStyle(),
+          unSelectedTextStyle: TextStyle(
+            fontSize: 13,
+          ),
           labels: labels,
           selectedLabelIndex: (index) {
             setState(() {

@@ -73,7 +73,7 @@ class _CardDesktop extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16),
-              Text(fighterDoc.data()['categoria']),
+              Text(fighterDoc.data()['categoria'], textScaleFactor: .9),
               SizedBox(height: 2),
               Text(fighterDoc.data()['cartel']),
             ],

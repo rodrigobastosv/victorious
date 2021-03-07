@@ -63,13 +63,16 @@ class _VideosPageState extends State<VideosPage> {
       children: [
         FlutterToggleTab(
           borderRadius: 0,
-          width: MediaQuery.of(context).size.width > 600 ? 80 : 180,
+          width: MediaQuery.of(context).size.width > 600 ? 60 : 180,
           height: 40,
           initialIndex: selectedLabelIndex,
           selectedTextStyle: TextStyle(
             fontWeight: FontWeight.w700,
+            fontSize: 13,
           ),
-          unSelectedTextStyle: TextStyle(),
+          unSelectedTextStyle: TextStyle(
+            fontSize: 13,
+          ),
           labels: categorias,
           selectedLabelIndex: (index) {
             setState(() {

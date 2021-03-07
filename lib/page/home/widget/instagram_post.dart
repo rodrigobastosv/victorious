@@ -30,21 +30,29 @@ class InstagramPost extends StatelessWidget {
                 height: 200,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryVariant,
                   image: DecorationImage(
                     image: NetworkImage(urlFoto),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Padding(
+              Container(
+                width: 283,
+                height: 220,
+                alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 16,
                 ),
                 child: Text(
-                  descricao,
+                  (descricao.length > 350
+                      ? '${descricao.substring(0, 350)}...'
+                      : descricao),
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  maxLines: 11,
                 ),
               ),
             ],

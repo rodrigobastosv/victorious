@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -40,6 +42,8 @@ class _LatestYoutubeVideosState extends State<LatestYoutubeVideos> {
                         ? 160
                         : 217,
                     child: YoutubePlayerIFrame(
+                      gestureRecognizers: <
+                          Factory<OneSequenceGestureRecognizer>>{},
                       controller: YoutubePlayerController(
                         initialVideoId: idVideo,
                         params: YoutubePlayerParams(

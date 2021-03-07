@@ -21,6 +21,8 @@ class _VSAppBarDesktop extends StatelessWidget {
         child: Image.asset(
           'web/images/logo.png',
           height: 36,
+          width: 160,
+          fit: BoxFit.contain,
         ),
         onTap: () => context.beamTo(
           HomeLocation(),
@@ -85,6 +87,8 @@ class _VSAppBarMobile extends StatelessWidget {
         child: Image.asset(
           'web/images/logo.png',
           height: 36,
+          width: 160,
+          fit: BoxFit.contain,
         ),
         onTap: () => context.beamTo(
           HomeLocation(),

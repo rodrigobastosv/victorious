@@ -29,8 +29,9 @@ class Banners extends StatelessWidget {
             items: datas
                 .map(
                   (data) => InkWell(
-                    autofocus: false,
                     hoverColor: Theme.of(context).scaffoldBackgroundColor,
+                    splashColor: Theme.of(context).scaffoldBackgroundColor,
+                    highlightColor: Theme.of(context).scaffoldBackgroundColor,
                     onTap: () =>
                         data['link'] != null ? launch(data['link']) : null,
                     child: Padding(
