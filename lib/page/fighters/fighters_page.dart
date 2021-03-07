@@ -18,7 +18,8 @@ class FightersPage extends StatefulWidget {
 class _FightersPageState extends State<FightersPage> {
   List<String> labels = [
     'Destaques',
-    'Feminino',
+    'Peso Mosca',
+    'Peso Palha',
     'Peso Galo',
     'Peso Pena',
     'Peso Leve',
