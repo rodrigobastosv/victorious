@@ -28,7 +28,9 @@ class Banners extends StatelessWidget {
             ),
             items: datas
                 .map(
-                  (data) => GestureDetector(
+                  (data) => InkWell(
+                    autofocus: false,
+                    hoverColor: Theme.of(context).scaffoldBackgroundColor,
                     onTap: () =>
                         data['link'] != null ? launch(data['link']) : null,
                     child: Padding(

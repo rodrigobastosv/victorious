@@ -92,11 +92,13 @@ class _VideosPageState extends State<VideosPage> {
             .toList();
     return Expanded(
       child: GridView.builder(
+        key: UniqueKey(),
         padding: EdgeInsets.symmetric(horizontal: 16),
         itemBuilder: (_, i) {
           final idVideo = YoutubePlayerController.convertUrlToId(
               docsFiltered[i].data()['video_url']);
           return YoutubePlayerIFrame(
+            key: UniqueKey(),
             controller: YoutubePlayerController(
               initialVideoId: idVideo,
               params: YoutubePlayerParams(
